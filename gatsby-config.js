@@ -51,7 +51,7 @@ module.exports = {
             },
           },
           Post: {
-            limit: 50,
+            limit: 55,
           },
           Tag: {
             limit: 10,
