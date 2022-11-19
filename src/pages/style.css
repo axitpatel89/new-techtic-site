@@ -1,0 +1,15 @@
+html {
+  scroll-behavior: smooth;
+  cursor: url("../images/cursor.svg"), auto;
+}
+
+.open {
+  margin-bottom: 0px !important;
+}
+
+.display {
+  display: none;
+}
+.ant-collapse-content {
+  transition: all 1s ease-in-out !important;
+  }
