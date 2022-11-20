@@ -442,6 +442,7 @@ type File = Node & {
   readonly ext: Scalars['String'];
   readonly extension: Scalars['String'];
   readonly gid: Scalars['Int'];
+  readonly hash: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly ino: Scalars['Float'];
   readonly internal: Internal;
@@ -462,7 +463,6 @@ type File = Node & {
   readonly size: Scalars['Int'];
   readonly sourceInstanceName: Scalars['String'];
   readonly uid: Scalars['Int'];
-  readonly url: Maybe<Scalars['String']>;
 };
 
 
@@ -774,6 +774,7 @@ type FileFieldsEnum =
   | 'ext'
   | 'extension'
   | 'gid'
+  | 'hash'
   | 'id'
   | 'ino'
   | 'internal.content'
@@ -840,8 +841,7 @@ type FileFieldsEnum =
   | 'root'
   | 'size'
   | 'sourceInstanceName'
-  | 'uid'
-  | 'url';
+  | 'uid';
 
 type FileFilterInput = {
   readonly absolutePath: InputMaybe<StringQueryOperatorInput>;
@@ -865,6 +865,7 @@ type FileFilterInput = {
   readonly ext: InputMaybe<StringQueryOperatorInput>;
   readonly extension: InputMaybe<StringQueryOperatorInput>;
   readonly gid: InputMaybe<IntQueryOperatorInput>;
+  readonly hash: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly ino: InputMaybe<FloatQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
@@ -884,7 +885,6 @@ type FileFilterInput = {
   readonly size: InputMaybe<IntQueryOperatorInput>;
   readonly sourceInstanceName: InputMaybe<StringQueryOperatorInput>;
   readonly uid: InputMaybe<IntQueryOperatorInput>;
-  readonly url: InputMaybe<StringQueryOperatorInput>;
 };
 
 type FileGroupConnection = {
@@ -2593,6 +2593,7 @@ type Query_fileArgs = {
   ext: InputMaybe<StringQueryOperatorInput>;
   extension: InputMaybe<StringQueryOperatorInput>;
   gid: InputMaybe<IntQueryOperatorInput>;
+  hash: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   ino: InputMaybe<FloatQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
@@ -2612,7 +2613,6 @@ type Query_fileArgs = {
   size: InputMaybe<IntQueryOperatorInput>;
   sourceInstanceName: InputMaybe<StringQueryOperatorInput>;
   uid: InputMaybe<IntQueryOperatorInput>;
-  url: InputMaybe<StringQueryOperatorInput>;
 };
 
 
@@ -6196,6 +6196,7 @@ type tsCareersCategoryFieldsEnum =
   | 'seo.opengraphImage.localFile.ext'
   | 'seo.opengraphImage.localFile.extension'
   | 'seo.opengraphImage.localFile.gid'
+  | 'seo.opengraphImage.localFile.hash'
   | 'seo.opengraphImage.localFile.id'
   | 'seo.opengraphImage.localFile.ino'
   | 'seo.opengraphImage.localFile.mode'
@@ -6213,7 +6214,6 @@ type tsCareersCategoryFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
-  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -6249,6 +6249,7 @@ type tsCareersCategoryFieldsEnum =
   | 'seo.opengraphImage.remoteFile.ext'
   | 'seo.opengraphImage.remoteFile.extension'
   | 'seo.opengraphImage.remoteFile.gid'
+  | 'seo.opengraphImage.remoteFile.hash'
   | 'seo.opengraphImage.remoteFile.id'
   | 'seo.opengraphImage.remoteFile.ino'
   | 'seo.opengraphImage.remoteFile.mode'
@@ -6266,7 +6267,6 @@ type tsCareersCategoryFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
-  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -6369,6 +6369,7 @@ type tsCareersCategoryFieldsEnum =
   | 'seo.twitterImage.localFile.ext'
   | 'seo.twitterImage.localFile.extension'
   | 'seo.twitterImage.localFile.gid'
+  | 'seo.twitterImage.localFile.hash'
   | 'seo.twitterImage.localFile.id'
   | 'seo.twitterImage.localFile.ino'
   | 'seo.twitterImage.localFile.mode'
@@ -6386,7 +6387,6 @@ type tsCareersCategoryFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
-  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -6422,6 +6422,7 @@ type tsCareersCategoryFieldsEnum =
   | 'seo.twitterImage.remoteFile.ext'
   | 'seo.twitterImage.remoteFile.extension'
   | 'seo.twitterImage.remoteFile.gid'
+  | 'seo.twitterImage.remoteFile.hash'
   | 'seo.twitterImage.remoteFile.id'
   | 'seo.twitterImage.remoteFile.ino'
   | 'seo.twitterImage.remoteFile.mode'
@@ -6439,7 +6440,6 @@ type tsCareersCategoryFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
-  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -7109,6 +7109,7 @@ type tsCareersFieldsEnum =
   | 'featuredImage.node.localFile.ext'
   | 'featuredImage.node.localFile.extension'
   | 'featuredImage.node.localFile.gid'
+  | 'featuredImage.node.localFile.hash'
   | 'featuredImage.node.localFile.id'
   | 'featuredImage.node.localFile.ino'
   | 'featuredImage.node.localFile.mode'
@@ -7126,7 +7127,6 @@ type tsCareersFieldsEnum =
   | 'featuredImage.node.localFile.size'
   | 'featuredImage.node.localFile.sourceInstanceName'
   | 'featuredImage.node.localFile.uid'
-  | 'featuredImage.node.localFile.url'
   | 'featuredImage.node.mediaDetails.file'
   | 'featuredImage.node.mediaDetails.height'
   | 'featuredImage.node.mediaDetails.sizes'
@@ -7162,6 +7162,7 @@ type tsCareersFieldsEnum =
   | 'featuredImage.node.remoteFile.ext'
   | 'featuredImage.node.remoteFile.extension'
   | 'featuredImage.node.remoteFile.gid'
+  | 'featuredImage.node.remoteFile.hash'
   | 'featuredImage.node.remoteFile.id'
   | 'featuredImage.node.remoteFile.ino'
   | 'featuredImage.node.remoteFile.mode'
@@ -7179,7 +7180,6 @@ type tsCareersFieldsEnum =
   | 'featuredImage.node.remoteFile.size'
   | 'featuredImage.node.remoteFile.sourceInstanceName'
   | 'featuredImage.node.remoteFile.uid'
-  | 'featuredImage.node.remoteFile.url'
   | 'featuredImage.node.resize.height'
   | 'featuredImage.node.resize.src'
   | 'featuredImage.node.resize.width'
@@ -7409,6 +7409,7 @@ type tsCareersFieldsEnum =
   | 'seo.opengraphImage.localFile.ext'
   | 'seo.opengraphImage.localFile.extension'
   | 'seo.opengraphImage.localFile.gid'
+  | 'seo.opengraphImage.localFile.hash'
   | 'seo.opengraphImage.localFile.id'
   | 'seo.opengraphImage.localFile.ino'
   | 'seo.opengraphImage.localFile.mode'
@@ -7426,7 +7427,6 @@ type tsCareersFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
-  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -7462,6 +7462,7 @@ type tsCareersFieldsEnum =
   | 'seo.opengraphImage.remoteFile.ext'
   | 'seo.opengraphImage.remoteFile.extension'
   | 'seo.opengraphImage.remoteFile.gid'
+  | 'seo.opengraphImage.remoteFile.hash'
   | 'seo.opengraphImage.remoteFile.id'
   | 'seo.opengraphImage.remoteFile.ino'
   | 'seo.opengraphImage.remoteFile.mode'
@@ -7479,7 +7480,6 @@ type tsCareersFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
-  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -7585,6 +7585,7 @@ type tsCareersFieldsEnum =
   | 'seo.twitterImage.localFile.ext'
   | 'seo.twitterImage.localFile.extension'
   | 'seo.twitterImage.localFile.gid'
+  | 'seo.twitterImage.localFile.hash'
   | 'seo.twitterImage.localFile.id'
   | 'seo.twitterImage.localFile.ino'
   | 'seo.twitterImage.localFile.mode'
@@ -7602,7 +7603,6 @@ type tsCareersFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
-  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -7638,6 +7638,7 @@ type tsCareersFieldsEnum =
   | 'seo.twitterImage.remoteFile.ext'
   | 'seo.twitterImage.remoteFile.extension'
   | 'seo.twitterImage.remoteFile.gid'
+  | 'seo.twitterImage.remoteFile.hash'
   | 'seo.twitterImage.remoteFile.id'
   | 'seo.twitterImage.remoteFile.ino'
   | 'seo.twitterImage.remoteFile.mode'
@@ -7655,7 +7656,6 @@ type tsCareersFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
-  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -8541,6 +8541,7 @@ type tsCaseStudyCategoryFieldsEnum =
   | 'seo.opengraphImage.localFile.ext'
   | 'seo.opengraphImage.localFile.extension'
   | 'seo.opengraphImage.localFile.gid'
+  | 'seo.opengraphImage.localFile.hash'
   | 'seo.opengraphImage.localFile.id'
   | 'seo.opengraphImage.localFile.ino'
   | 'seo.opengraphImage.localFile.mode'
@@ -8558,7 +8559,6 @@ type tsCaseStudyCategoryFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
-  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -8594,6 +8594,7 @@ type tsCaseStudyCategoryFieldsEnum =
   | 'seo.opengraphImage.remoteFile.ext'
   | 'seo.opengraphImage.remoteFile.extension'
   | 'seo.opengraphImage.remoteFile.gid'
+  | 'seo.opengraphImage.remoteFile.hash'
   | 'seo.opengraphImage.remoteFile.id'
   | 'seo.opengraphImage.remoteFile.ino'
   | 'seo.opengraphImage.remoteFile.mode'
@@ -8611,7 +8612,6 @@ type tsCaseStudyCategoryFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
-  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -8714,6 +8714,7 @@ type tsCaseStudyCategoryFieldsEnum =
   | 'seo.twitterImage.localFile.ext'
   | 'seo.twitterImage.localFile.extension'
   | 'seo.twitterImage.localFile.gid'
+  | 'seo.twitterImage.localFile.hash'
   | 'seo.twitterImage.localFile.id'
   | 'seo.twitterImage.localFile.ino'
   | 'seo.twitterImage.localFile.mode'
@@ -8731,7 +8732,6 @@ type tsCaseStudyCategoryFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
-  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -8767,6 +8767,7 @@ type tsCaseStudyCategoryFieldsEnum =
   | 'seo.twitterImage.remoteFile.ext'
   | 'seo.twitterImage.remoteFile.extension'
   | 'seo.twitterImage.remoteFile.gid'
+  | 'seo.twitterImage.remoteFile.hash'
   | 'seo.twitterImage.remoteFile.id'
   | 'seo.twitterImage.remoteFile.ino'
   | 'seo.twitterImage.remoteFile.mode'
@@ -8784,7 +8785,6 @@ type tsCaseStudyCategoryFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
-  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -9321,6 +9321,7 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudyDetailsPage.detailsPageImage.localFile.ext'
   | 'caseStudyDetailsPage.detailsPageImage.localFile.extension'
   | 'caseStudyDetailsPage.detailsPageImage.localFile.gid'
+  | 'caseStudyDetailsPage.detailsPageImage.localFile.hash'
   | 'caseStudyDetailsPage.detailsPageImage.localFile.id'
   | 'caseStudyDetailsPage.detailsPageImage.localFile.ino'
   | 'caseStudyDetailsPage.detailsPageImage.localFile.mode'
@@ -9338,7 +9339,6 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudyDetailsPage.detailsPageImage.localFile.size'
   | 'caseStudyDetailsPage.detailsPageImage.localFile.sourceInstanceName'
   | 'caseStudyDetailsPage.detailsPageImage.localFile.uid'
-  | 'caseStudyDetailsPage.detailsPageImage.localFile.url'
   | 'caseStudyDetailsPage.detailsPageImage.mediaDetails.file'
   | 'caseStudyDetailsPage.detailsPageImage.mediaDetails.height'
   | 'caseStudyDetailsPage.detailsPageImage.mediaDetails.sizes'
@@ -9374,6 +9374,7 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudyDetailsPage.detailsPageImage.remoteFile.ext'
   | 'caseStudyDetailsPage.detailsPageImage.remoteFile.extension'
   | 'caseStudyDetailsPage.detailsPageImage.remoteFile.gid'
+  | 'caseStudyDetailsPage.detailsPageImage.remoteFile.hash'
   | 'caseStudyDetailsPage.detailsPageImage.remoteFile.id'
   | 'caseStudyDetailsPage.detailsPageImage.remoteFile.ino'
   | 'caseStudyDetailsPage.detailsPageImage.remoteFile.mode'
@@ -9391,7 +9392,6 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudyDetailsPage.detailsPageImage.remoteFile.size'
   | 'caseStudyDetailsPage.detailsPageImage.remoteFile.sourceInstanceName'
   | 'caseStudyDetailsPage.detailsPageImage.remoteFile.uid'
-  | 'caseStudyDetailsPage.detailsPageImage.remoteFile.url'
   | 'caseStudyDetailsPage.detailsPageImage.resize.height'
   | 'caseStudyDetailsPage.detailsPageImage.resize.src'
   | 'caseStudyDetailsPage.detailsPageImage.resize.width'
@@ -9666,6 +9666,7 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudy.appGallery.localFile.ext'
   | 'caseStudy.appGallery.localFile.extension'
   | 'caseStudy.appGallery.localFile.gid'
+  | 'caseStudy.appGallery.localFile.hash'
   | 'caseStudy.appGallery.localFile.id'
   | 'caseStudy.appGallery.localFile.ino'
   | 'caseStudy.appGallery.localFile.mode'
@@ -9683,7 +9684,6 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudy.appGallery.localFile.size'
   | 'caseStudy.appGallery.localFile.sourceInstanceName'
   | 'caseStudy.appGallery.localFile.uid'
-  | 'caseStudy.appGallery.localFile.url'
   | 'caseStudy.appGallery.mediaDetails.file'
   | 'caseStudy.appGallery.mediaDetails.height'
   | 'caseStudy.appGallery.mediaDetails.sizes'
@@ -9719,6 +9719,7 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudy.appGallery.remoteFile.ext'
   | 'caseStudy.appGallery.remoteFile.extension'
   | 'caseStudy.appGallery.remoteFile.gid'
+  | 'caseStudy.appGallery.remoteFile.hash'
   | 'caseStudy.appGallery.remoteFile.id'
   | 'caseStudy.appGallery.remoteFile.ino'
   | 'caseStudy.appGallery.remoteFile.mode'
@@ -9736,7 +9737,6 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudy.appGallery.remoteFile.size'
   | 'caseStudy.appGallery.remoteFile.sourceInstanceName'
   | 'caseStudy.appGallery.remoteFile.uid'
-  | 'caseStudy.appGallery.remoteFile.url'
   | 'caseStudy.appGallery.resize.height'
   | 'caseStudy.appGallery.resize.src'
   | 'caseStudy.appGallery.resize.width'
@@ -9829,6 +9829,7 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudy.detailPageImage.localFile.ext'
   | 'caseStudy.detailPageImage.localFile.extension'
   | 'caseStudy.detailPageImage.localFile.gid'
+  | 'caseStudy.detailPageImage.localFile.hash'
   | 'caseStudy.detailPageImage.localFile.id'
   | 'caseStudy.detailPageImage.localFile.ino'
   | 'caseStudy.detailPageImage.localFile.mode'
@@ -9846,7 +9847,6 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudy.detailPageImage.localFile.size'
   | 'caseStudy.detailPageImage.localFile.sourceInstanceName'
   | 'caseStudy.detailPageImage.localFile.uid'
-  | 'caseStudy.detailPageImage.localFile.url'
   | 'caseStudy.detailPageImage.mediaDetails.file'
   | 'caseStudy.detailPageImage.mediaDetails.height'
   | 'caseStudy.detailPageImage.mediaDetails.sizes'
@@ -9882,6 +9882,7 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudy.detailPageImage.remoteFile.ext'
   | 'caseStudy.detailPageImage.remoteFile.extension'
   | 'caseStudy.detailPageImage.remoteFile.gid'
+  | 'caseStudy.detailPageImage.remoteFile.hash'
   | 'caseStudy.detailPageImage.remoteFile.id'
   | 'caseStudy.detailPageImage.remoteFile.ino'
   | 'caseStudy.detailPageImage.remoteFile.mode'
@@ -9899,7 +9900,6 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudy.detailPageImage.remoteFile.size'
   | 'caseStudy.detailPageImage.remoteFile.sourceInstanceName'
   | 'caseStudy.detailPageImage.remoteFile.uid'
-  | 'caseStudy.detailPageImage.remoteFile.url'
   | 'caseStudy.detailPageImage.resize.height'
   | 'caseStudy.detailPageImage.resize.src'
   | 'caseStudy.detailPageImage.resize.width'
@@ -9994,6 +9994,7 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudy.gallery.localFile.ext'
   | 'caseStudy.gallery.localFile.extension'
   | 'caseStudy.gallery.localFile.gid'
+  | 'caseStudy.gallery.localFile.hash'
   | 'caseStudy.gallery.localFile.id'
   | 'caseStudy.gallery.localFile.ino'
   | 'caseStudy.gallery.localFile.mode'
@@ -10011,7 +10012,6 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudy.gallery.localFile.size'
   | 'caseStudy.gallery.localFile.sourceInstanceName'
   | 'caseStudy.gallery.localFile.uid'
-  | 'caseStudy.gallery.localFile.url'
   | 'caseStudy.gallery.mediaDetails.file'
   | 'caseStudy.gallery.mediaDetails.height'
   | 'caseStudy.gallery.mediaDetails.sizes'
@@ -10047,6 +10047,7 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudy.gallery.remoteFile.ext'
   | 'caseStudy.gallery.remoteFile.extension'
   | 'caseStudy.gallery.remoteFile.gid'
+  | 'caseStudy.gallery.remoteFile.hash'
   | 'caseStudy.gallery.remoteFile.id'
   | 'caseStudy.gallery.remoteFile.ino'
   | 'caseStudy.gallery.remoteFile.mode'
@@ -10064,7 +10065,6 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudy.gallery.remoteFile.size'
   | 'caseStudy.gallery.remoteFile.sourceInstanceName'
   | 'caseStudy.gallery.remoteFile.uid'
-  | 'caseStudy.gallery.remoteFile.url'
   | 'caseStudy.gallery.resize.height'
   | 'caseStudy.gallery.resize.src'
   | 'caseStudy.gallery.resize.width'
@@ -10161,6 +10161,7 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudy.secondoryImage.localFile.ext'
   | 'caseStudy.secondoryImage.localFile.extension'
   | 'caseStudy.secondoryImage.localFile.gid'
+  | 'caseStudy.secondoryImage.localFile.hash'
   | 'caseStudy.secondoryImage.localFile.id'
   | 'caseStudy.secondoryImage.localFile.ino'
   | 'caseStudy.secondoryImage.localFile.mode'
@@ -10178,7 +10179,6 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudy.secondoryImage.localFile.size'
   | 'caseStudy.secondoryImage.localFile.sourceInstanceName'
   | 'caseStudy.secondoryImage.localFile.uid'
-  | 'caseStudy.secondoryImage.localFile.url'
   | 'caseStudy.secondoryImage.mediaDetails.file'
   | 'caseStudy.secondoryImage.mediaDetails.height'
   | 'caseStudy.secondoryImage.mediaDetails.sizes'
@@ -10214,6 +10214,7 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudy.secondoryImage.remoteFile.ext'
   | 'caseStudy.secondoryImage.remoteFile.extension'
   | 'caseStudy.secondoryImage.remoteFile.gid'
+  | 'caseStudy.secondoryImage.remoteFile.hash'
   | 'caseStudy.secondoryImage.remoteFile.id'
   | 'caseStudy.secondoryImage.remoteFile.ino'
   | 'caseStudy.secondoryImage.remoteFile.mode'
@@ -10231,7 +10232,6 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudy.secondoryImage.remoteFile.size'
   | 'caseStudy.secondoryImage.remoteFile.sourceInstanceName'
   | 'caseStudy.secondoryImage.remoteFile.uid'
-  | 'caseStudy.secondoryImage.remoteFile.url'
   | 'caseStudy.secondoryImage.resize.height'
   | 'caseStudy.secondoryImage.resize.src'
   | 'caseStudy.secondoryImage.resize.width'
@@ -10452,6 +10452,7 @@ type tsCaseStudyFieldsEnum =
   | 'featuredImage.node.localFile.ext'
   | 'featuredImage.node.localFile.extension'
   | 'featuredImage.node.localFile.gid'
+  | 'featuredImage.node.localFile.hash'
   | 'featuredImage.node.localFile.id'
   | 'featuredImage.node.localFile.ino'
   | 'featuredImage.node.localFile.mode'
@@ -10469,7 +10470,6 @@ type tsCaseStudyFieldsEnum =
   | 'featuredImage.node.localFile.size'
   | 'featuredImage.node.localFile.sourceInstanceName'
   | 'featuredImage.node.localFile.uid'
-  | 'featuredImage.node.localFile.url'
   | 'featuredImage.node.mediaDetails.file'
   | 'featuredImage.node.mediaDetails.height'
   | 'featuredImage.node.mediaDetails.sizes'
@@ -10505,6 +10505,7 @@ type tsCaseStudyFieldsEnum =
   | 'featuredImage.node.remoteFile.ext'
   | 'featuredImage.node.remoteFile.extension'
   | 'featuredImage.node.remoteFile.gid'
+  | 'featuredImage.node.remoteFile.hash'
   | 'featuredImage.node.remoteFile.id'
   | 'featuredImage.node.remoteFile.ino'
   | 'featuredImage.node.remoteFile.mode'
@@ -10522,7 +10523,6 @@ type tsCaseStudyFieldsEnum =
   | 'featuredImage.node.remoteFile.size'
   | 'featuredImage.node.remoteFile.sourceInstanceName'
   | 'featuredImage.node.remoteFile.uid'
-  | 'featuredImage.node.remoteFile.url'
   | 'featuredImage.node.resize.height'
   | 'featuredImage.node.resize.src'
   | 'featuredImage.node.resize.width'
@@ -10694,6 +10694,7 @@ type tsCaseStudyFieldsEnum =
   | 'newCaseStudy.detailPageImage.localFile.ext'
   | 'newCaseStudy.detailPageImage.localFile.extension'
   | 'newCaseStudy.detailPageImage.localFile.gid'
+  | 'newCaseStudy.detailPageImage.localFile.hash'
   | 'newCaseStudy.detailPageImage.localFile.id'
   | 'newCaseStudy.detailPageImage.localFile.ino'
   | 'newCaseStudy.detailPageImage.localFile.mode'
@@ -10711,7 +10712,6 @@ type tsCaseStudyFieldsEnum =
   | 'newCaseStudy.detailPageImage.localFile.size'
   | 'newCaseStudy.detailPageImage.localFile.sourceInstanceName'
   | 'newCaseStudy.detailPageImage.localFile.uid'
-  | 'newCaseStudy.detailPageImage.localFile.url'
   | 'newCaseStudy.detailPageImage.mediaDetails.file'
   | 'newCaseStudy.detailPageImage.mediaDetails.height'
   | 'newCaseStudy.detailPageImage.mediaDetails.sizes'
@@ -10747,6 +10747,7 @@ type tsCaseStudyFieldsEnum =
   | 'newCaseStudy.detailPageImage.remoteFile.ext'
   | 'newCaseStudy.detailPageImage.remoteFile.extension'
   | 'newCaseStudy.detailPageImage.remoteFile.gid'
+  | 'newCaseStudy.detailPageImage.remoteFile.hash'
   | 'newCaseStudy.detailPageImage.remoteFile.id'
   | 'newCaseStudy.detailPageImage.remoteFile.ino'
   | 'newCaseStudy.detailPageImage.remoteFile.mode'
@@ -10764,7 +10765,6 @@ type tsCaseStudyFieldsEnum =
   | 'newCaseStudy.detailPageImage.remoteFile.size'
   | 'newCaseStudy.detailPageImage.remoteFile.sourceInstanceName'
   | 'newCaseStudy.detailPageImage.remoteFile.uid'
-  | 'newCaseStudy.detailPageImage.remoteFile.url'
   | 'newCaseStudy.detailPageImage.resize.height'
   | 'newCaseStudy.detailPageImage.resize.src'
   | 'newCaseStudy.detailPageImage.resize.width'
@@ -10859,6 +10859,7 @@ type tsCaseStudyFieldsEnum =
   | 'newCaseStudy.ppcPage.localFile.ext'
   | 'newCaseStudy.ppcPage.localFile.extension'
   | 'newCaseStudy.ppcPage.localFile.gid'
+  | 'newCaseStudy.ppcPage.localFile.hash'
   | 'newCaseStudy.ppcPage.localFile.id'
   | 'newCaseStudy.ppcPage.localFile.ino'
   | 'newCaseStudy.ppcPage.localFile.mode'
@@ -10876,7 +10877,6 @@ type tsCaseStudyFieldsEnum =
   | 'newCaseStudy.ppcPage.localFile.size'
   | 'newCaseStudy.ppcPage.localFile.sourceInstanceName'
   | 'newCaseStudy.ppcPage.localFile.uid'
-  | 'newCaseStudy.ppcPage.localFile.url'
   | 'newCaseStudy.ppcPage.mediaDetails.file'
   | 'newCaseStudy.ppcPage.mediaDetails.height'
   | 'newCaseStudy.ppcPage.mediaDetails.sizes'
@@ -10912,6 +10912,7 @@ type tsCaseStudyFieldsEnum =
   | 'newCaseStudy.ppcPage.remoteFile.ext'
   | 'newCaseStudy.ppcPage.remoteFile.extension'
   | 'newCaseStudy.ppcPage.remoteFile.gid'
+  | 'newCaseStudy.ppcPage.remoteFile.hash'
   | 'newCaseStudy.ppcPage.remoteFile.id'
   | 'newCaseStudy.ppcPage.remoteFile.ino'
   | 'newCaseStudy.ppcPage.remoteFile.mode'
@@ -10929,7 +10930,6 @@ type tsCaseStudyFieldsEnum =
   | 'newCaseStudy.ppcPage.remoteFile.size'
   | 'newCaseStudy.ppcPage.remoteFile.sourceInstanceName'
   | 'newCaseStudy.ppcPage.remoteFile.uid'
-  | 'newCaseStudy.ppcPage.remoteFile.url'
   | 'newCaseStudy.ppcPage.resize.height'
   | 'newCaseStudy.ppcPage.resize.src'
   | 'newCaseStudy.ppcPage.resize.width'
@@ -11164,6 +11164,7 @@ type tsCaseStudyFieldsEnum =
   | 'portfolio.listingPage.localFile.ext'
   | 'portfolio.listingPage.localFile.extension'
   | 'portfolio.listingPage.localFile.gid'
+  | 'portfolio.listingPage.localFile.hash'
   | 'portfolio.listingPage.localFile.id'
   | 'portfolio.listingPage.localFile.ino'
   | 'portfolio.listingPage.localFile.mode'
@@ -11181,7 +11182,6 @@ type tsCaseStudyFieldsEnum =
   | 'portfolio.listingPage.localFile.size'
   | 'portfolio.listingPage.localFile.sourceInstanceName'
   | 'portfolio.listingPage.localFile.uid'
-  | 'portfolio.listingPage.localFile.url'
   | 'portfolio.listingPage.mediaDetails.file'
   | 'portfolio.listingPage.mediaDetails.height'
   | 'portfolio.listingPage.mediaDetails.sizes'
@@ -11217,6 +11217,7 @@ type tsCaseStudyFieldsEnum =
   | 'portfolio.listingPage.remoteFile.ext'
   | 'portfolio.listingPage.remoteFile.extension'
   | 'portfolio.listingPage.remoteFile.gid'
+  | 'portfolio.listingPage.remoteFile.hash'
   | 'portfolio.listingPage.remoteFile.id'
   | 'portfolio.listingPage.remoteFile.ino'
   | 'portfolio.listingPage.remoteFile.mode'
@@ -11234,7 +11235,6 @@ type tsCaseStudyFieldsEnum =
   | 'portfolio.listingPage.remoteFile.size'
   | 'portfolio.listingPage.remoteFile.sourceInstanceName'
   | 'portfolio.listingPage.remoteFile.uid'
-  | 'portfolio.listingPage.remoteFile.url'
   | 'portfolio.listingPage.resize.height'
   | 'portfolio.listingPage.resize.src'
   | 'portfolio.listingPage.resize.width'
@@ -11331,6 +11331,7 @@ type tsCaseStudyFieldsEnum =
   | 'portfolio.startupTemplateImage.localFile.ext'
   | 'portfolio.startupTemplateImage.localFile.extension'
   | 'portfolio.startupTemplateImage.localFile.gid'
+  | 'portfolio.startupTemplateImage.localFile.hash'
   | 'portfolio.startupTemplateImage.localFile.id'
   | 'portfolio.startupTemplateImage.localFile.ino'
   | 'portfolio.startupTemplateImage.localFile.mode'
@@ -11348,7 +11349,6 @@ type tsCaseStudyFieldsEnum =
   | 'portfolio.startupTemplateImage.localFile.size'
   | 'portfolio.startupTemplateImage.localFile.sourceInstanceName'
   | 'portfolio.startupTemplateImage.localFile.uid'
-  | 'portfolio.startupTemplateImage.localFile.url'
   | 'portfolio.startupTemplateImage.mediaDetails.file'
   | 'portfolio.startupTemplateImage.mediaDetails.height'
   | 'portfolio.startupTemplateImage.mediaDetails.sizes'
@@ -11384,6 +11384,7 @@ type tsCaseStudyFieldsEnum =
   | 'portfolio.startupTemplateImage.remoteFile.ext'
   | 'portfolio.startupTemplateImage.remoteFile.extension'
   | 'portfolio.startupTemplateImage.remoteFile.gid'
+  | 'portfolio.startupTemplateImage.remoteFile.hash'
   | 'portfolio.startupTemplateImage.remoteFile.id'
   | 'portfolio.startupTemplateImage.remoteFile.ino'
   | 'portfolio.startupTemplateImage.remoteFile.mode'
@@ -11401,7 +11402,6 @@ type tsCaseStudyFieldsEnum =
   | 'portfolio.startupTemplateImage.remoteFile.size'
   | 'portfolio.startupTemplateImage.remoteFile.sourceInstanceName'
   | 'portfolio.startupTemplateImage.remoteFile.uid'
-  | 'portfolio.startupTemplateImage.remoteFile.url'
   | 'portfolio.startupTemplateImage.resize.height'
   | 'portfolio.startupTemplateImage.resize.src'
   | 'portfolio.startupTemplateImage.resize.width'
@@ -11507,6 +11507,7 @@ type tsCaseStudyFieldsEnum =
   | 'seo.opengraphImage.localFile.ext'
   | 'seo.opengraphImage.localFile.extension'
   | 'seo.opengraphImage.localFile.gid'
+  | 'seo.opengraphImage.localFile.hash'
   | 'seo.opengraphImage.localFile.id'
   | 'seo.opengraphImage.localFile.ino'
   | 'seo.opengraphImage.localFile.mode'
@@ -11524,7 +11525,6 @@ type tsCaseStudyFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
-  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -11560,6 +11560,7 @@ type tsCaseStudyFieldsEnum =
   | 'seo.opengraphImage.remoteFile.ext'
   | 'seo.opengraphImage.remoteFile.extension'
   | 'seo.opengraphImage.remoteFile.gid'
+  | 'seo.opengraphImage.remoteFile.hash'
   | 'seo.opengraphImage.remoteFile.id'
   | 'seo.opengraphImage.remoteFile.ino'
   | 'seo.opengraphImage.remoteFile.mode'
@@ -11577,7 +11578,6 @@ type tsCaseStudyFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
-  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -11683,6 +11683,7 @@ type tsCaseStudyFieldsEnum =
   | 'seo.twitterImage.localFile.ext'
   | 'seo.twitterImage.localFile.extension'
   | 'seo.twitterImage.localFile.gid'
+  | 'seo.twitterImage.localFile.hash'
   | 'seo.twitterImage.localFile.id'
   | 'seo.twitterImage.localFile.ino'
   | 'seo.twitterImage.localFile.mode'
@@ -11700,7 +11701,6 @@ type tsCaseStudyFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
-  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -11736,6 +11736,7 @@ type tsCaseStudyFieldsEnum =
   | 'seo.twitterImage.remoteFile.ext'
   | 'seo.twitterImage.remoteFile.extension'
   | 'seo.twitterImage.remoteFile.gid'
+  | 'seo.twitterImage.remoteFile.hash'
   | 'seo.twitterImage.remoteFile.id'
   | 'seo.twitterImage.remoteFile.ino'
   | 'seo.twitterImage.remoteFile.mode'
@@ -11753,7 +11754,6 @@ type tsCaseStudyFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
-  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -12419,6 +12419,7 @@ type tsCaseStudyTypeFieldsEnum =
   | 'seo.opengraphImage.localFile.ext'
   | 'seo.opengraphImage.localFile.extension'
   | 'seo.opengraphImage.localFile.gid'
+  | 'seo.opengraphImage.localFile.hash'
   | 'seo.opengraphImage.localFile.id'
   | 'seo.opengraphImage.localFile.ino'
   | 'seo.opengraphImage.localFile.mode'
@@ -12436,7 +12437,6 @@ type tsCaseStudyTypeFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
-  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -12472,6 +12472,7 @@ type tsCaseStudyTypeFieldsEnum =
   | 'seo.opengraphImage.remoteFile.ext'
   | 'seo.opengraphImage.remoteFile.extension'
   | 'seo.opengraphImage.remoteFile.gid'
+  | 'seo.opengraphImage.remoteFile.hash'
   | 'seo.opengraphImage.remoteFile.id'
   | 'seo.opengraphImage.remoteFile.ino'
   | 'seo.opengraphImage.remoteFile.mode'
@@ -12489,7 +12490,6 @@ type tsCaseStudyTypeFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
-  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -12592,6 +12592,7 @@ type tsCaseStudyTypeFieldsEnum =
   | 'seo.twitterImage.localFile.ext'
   | 'seo.twitterImage.localFile.extension'
   | 'seo.twitterImage.localFile.gid'
+  | 'seo.twitterImage.localFile.hash'
   | 'seo.twitterImage.localFile.id'
   | 'seo.twitterImage.localFile.ino'
   | 'seo.twitterImage.localFile.mode'
@@ -12609,7 +12610,6 @@ type tsCaseStudyTypeFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
-  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -12645,6 +12645,7 @@ type tsCaseStudyTypeFieldsEnum =
   | 'seo.twitterImage.remoteFile.ext'
   | 'seo.twitterImage.remoteFile.extension'
   | 'seo.twitterImage.remoteFile.gid'
+  | 'seo.twitterImage.remoteFile.hash'
   | 'seo.twitterImage.remoteFile.id'
   | 'seo.twitterImage.remoteFile.ino'
   | 'seo.twitterImage.remoteFile.mode'
@@ -12662,7 +12663,6 @@ type tsCaseStudyTypeFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
-  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -13902,6 +13902,7 @@ type tsCategoryFieldsEnum =
   | 'seo.opengraphImage.localFile.ext'
   | 'seo.opengraphImage.localFile.extension'
   | 'seo.opengraphImage.localFile.gid'
+  | 'seo.opengraphImage.localFile.hash'
   | 'seo.opengraphImage.localFile.id'
   | 'seo.opengraphImage.localFile.ino'
   | 'seo.opengraphImage.localFile.mode'
@@ -13919,7 +13920,6 @@ type tsCategoryFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
-  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -13955,6 +13955,7 @@ type tsCategoryFieldsEnum =
   | 'seo.opengraphImage.remoteFile.ext'
   | 'seo.opengraphImage.remoteFile.extension'
   | 'seo.opengraphImage.remoteFile.gid'
+  | 'seo.opengraphImage.remoteFile.hash'
   | 'seo.opengraphImage.remoteFile.id'
   | 'seo.opengraphImage.remoteFile.ino'
   | 'seo.opengraphImage.remoteFile.mode'
@@ -13972,7 +13973,6 @@ type tsCategoryFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
-  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -14075,6 +14075,7 @@ type tsCategoryFieldsEnum =
   | 'seo.twitterImage.localFile.ext'
   | 'seo.twitterImage.localFile.extension'
   | 'seo.twitterImage.localFile.gid'
+  | 'seo.twitterImage.localFile.hash'
   | 'seo.twitterImage.localFile.id'
   | 'seo.twitterImage.localFile.ino'
   | 'seo.twitterImage.localFile.mode'
@@ -14092,7 +14093,6 @@ type tsCategoryFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
-  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -14128,6 +14128,7 @@ type tsCategoryFieldsEnum =
   | 'seo.twitterImage.remoteFile.ext'
   | 'seo.twitterImage.remoteFile.extension'
   | 'seo.twitterImage.remoteFile.gid'
+  | 'seo.twitterImage.remoteFile.hash'
   | 'seo.twitterImage.remoteFile.id'
   | 'seo.twitterImage.remoteFile.ino'
   | 'seo.twitterImage.remoteFile.mode'
@@ -14145,7 +14146,6 @@ type tsCategoryFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
-  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -15843,6 +15843,7 @@ type tsContentNodeFieldsEnum =
   | 'seo.opengraphImage.localFile.ext'
   | 'seo.opengraphImage.localFile.extension'
   | 'seo.opengraphImage.localFile.gid'
+  | 'seo.opengraphImage.localFile.hash'
   | 'seo.opengraphImage.localFile.id'
   | 'seo.opengraphImage.localFile.ino'
   | 'seo.opengraphImage.localFile.mode'
@@ -15860,7 +15861,6 @@ type tsContentNodeFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
-  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -15896,6 +15896,7 @@ type tsContentNodeFieldsEnum =
   | 'seo.opengraphImage.remoteFile.ext'
   | 'seo.opengraphImage.remoteFile.extension'
   | 'seo.opengraphImage.remoteFile.gid'
+  | 'seo.opengraphImage.remoteFile.hash'
   | 'seo.opengraphImage.remoteFile.id'
   | 'seo.opengraphImage.remoteFile.ino'
   | 'seo.opengraphImage.remoteFile.mode'
@@ -15913,7 +15914,6 @@ type tsContentNodeFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
-  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -16019,6 +16019,7 @@ type tsContentNodeFieldsEnum =
   | 'seo.twitterImage.localFile.ext'
   | 'seo.twitterImage.localFile.extension'
   | 'seo.twitterImage.localFile.gid'
+  | 'seo.twitterImage.localFile.hash'
   | 'seo.twitterImage.localFile.id'
   | 'seo.twitterImage.localFile.ino'
   | 'seo.twitterImage.localFile.mode'
@@ -16036,7 +16037,6 @@ type tsContentNodeFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
-  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -16072,6 +16072,7 @@ type tsContentNodeFieldsEnum =
   | 'seo.twitterImage.remoteFile.ext'
   | 'seo.twitterImage.remoteFile.extension'
   | 'seo.twitterImage.remoteFile.gid'
+  | 'seo.twitterImage.remoteFile.hash'
   | 'seo.twitterImage.remoteFile.id'
   | 'seo.twitterImage.remoteFile.ino'
   | 'seo.twitterImage.remoteFile.mode'
@@ -16089,7 +16090,6 @@ type tsContentNodeFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
-  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -24034,6 +24034,7 @@ type tsMediaItemFieldsEnum =
   | 'localFile.ext'
   | 'localFile.extension'
   | 'localFile.gid'
+  | 'localFile.hash'
   | 'localFile.id'
   | 'localFile.ino'
   | 'localFile.internal.content'
@@ -24075,7 +24076,6 @@ type tsMediaItemFieldsEnum =
   | 'localFile.size'
   | 'localFile.sourceInstanceName'
   | 'localFile.uid'
-  | 'localFile.url'
   | 'mediaDetails.file'
   | 'mediaDetails.height'
   | 'mediaDetails.meta.aperture'
@@ -24278,6 +24278,7 @@ type tsMediaItemFieldsEnum =
   | 'remoteFile.ext'
   | 'remoteFile.extension'
   | 'remoteFile.gid'
+  | 'remoteFile.hash'
   | 'remoteFile.id'
   | 'remoteFile.ino'
   | 'remoteFile.internal.content'
@@ -24319,7 +24320,6 @@ type tsMediaItemFieldsEnum =
   | 'remoteFile.size'
   | 'remoteFile.sourceInstanceName'
   | 'remoteFile.uid'
-  | 'remoteFile.url'
   | 'resize.height'
   | 'resize.src'
   | 'resize.width'
@@ -24393,6 +24393,7 @@ type tsMediaItemFieldsEnum =
   | 'seo.opengraphImage.localFile.ext'
   | 'seo.opengraphImage.localFile.extension'
   | 'seo.opengraphImage.localFile.gid'
+  | 'seo.opengraphImage.localFile.hash'
   | 'seo.opengraphImage.localFile.id'
   | 'seo.opengraphImage.localFile.ino'
   | 'seo.opengraphImage.localFile.mode'
@@ -24410,7 +24411,6 @@ type tsMediaItemFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
-  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -24446,6 +24446,7 @@ type tsMediaItemFieldsEnum =
   | 'seo.opengraphImage.remoteFile.ext'
   | 'seo.opengraphImage.remoteFile.extension'
   | 'seo.opengraphImage.remoteFile.gid'
+  | 'seo.opengraphImage.remoteFile.hash'
   | 'seo.opengraphImage.remoteFile.id'
   | 'seo.opengraphImage.remoteFile.ino'
   | 'seo.opengraphImage.remoteFile.mode'
@@ -24463,7 +24464,6 @@ type tsMediaItemFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
-  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -24569,6 +24569,7 @@ type tsMediaItemFieldsEnum =
   | 'seo.twitterImage.localFile.ext'
   | 'seo.twitterImage.localFile.extension'
   | 'seo.twitterImage.localFile.gid'
+  | 'seo.twitterImage.localFile.hash'
   | 'seo.twitterImage.localFile.id'
   | 'seo.twitterImage.localFile.ino'
   | 'seo.twitterImage.localFile.mode'
@@ -24586,7 +24587,6 @@ type tsMediaItemFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
-  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -24622,6 +24622,7 @@ type tsMediaItemFieldsEnum =
   | 'seo.twitterImage.remoteFile.ext'
   | 'seo.twitterImage.remoteFile.extension'
   | 'seo.twitterImage.remoteFile.gid'
+  | 'seo.twitterImage.remoteFile.hash'
   | 'seo.twitterImage.remoteFile.id'
   | 'seo.twitterImage.remoteFile.ino'
   | 'seo.twitterImage.remoteFile.mode'
@@ -24639,7 +24640,6 @@ type tsMediaItemFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
-  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -26567,6 +26567,7 @@ type tsPageFieldsEnum =
   | 'featuredImage.node.localFile.ext'
   | 'featuredImage.node.localFile.extension'
   | 'featuredImage.node.localFile.gid'
+  | 'featuredImage.node.localFile.hash'
   | 'featuredImage.node.localFile.id'
   | 'featuredImage.node.localFile.ino'
   | 'featuredImage.node.localFile.mode'
@@ -26584,7 +26585,6 @@ type tsPageFieldsEnum =
   | 'featuredImage.node.localFile.size'
   | 'featuredImage.node.localFile.sourceInstanceName'
   | 'featuredImage.node.localFile.uid'
-  | 'featuredImage.node.localFile.url'
   | 'featuredImage.node.mediaDetails.file'
   | 'featuredImage.node.mediaDetails.height'
   | 'featuredImage.node.mediaDetails.sizes'
@@ -26620,6 +26620,7 @@ type tsPageFieldsEnum =
   | 'featuredImage.node.remoteFile.ext'
   | 'featuredImage.node.remoteFile.extension'
   | 'featuredImage.node.remoteFile.gid'
+  | 'featuredImage.node.remoteFile.hash'
   | 'featuredImage.node.remoteFile.id'
   | 'featuredImage.node.remoteFile.ino'
   | 'featuredImage.node.remoteFile.mode'
@@ -26637,7 +26638,6 @@ type tsPageFieldsEnum =
   | 'featuredImage.node.remoteFile.size'
   | 'featuredImage.node.remoteFile.sourceInstanceName'
   | 'featuredImage.node.remoteFile.uid'
-  | 'featuredImage.node.remoteFile.url'
   | 'featuredImage.node.resize.height'
   | 'featuredImage.node.resize.src'
   | 'featuredImage.node.resize.width'
@@ -26872,6 +26872,7 @@ type tsPageFieldsEnum =
   | 'seo.opengraphImage.localFile.ext'
   | 'seo.opengraphImage.localFile.extension'
   | 'seo.opengraphImage.localFile.gid'
+  | 'seo.opengraphImage.localFile.hash'
   | 'seo.opengraphImage.localFile.id'
   | 'seo.opengraphImage.localFile.ino'
   | 'seo.opengraphImage.localFile.mode'
@@ -26889,7 +26890,6 @@ type tsPageFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
-  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -26925,6 +26925,7 @@ type tsPageFieldsEnum =
   | 'seo.opengraphImage.remoteFile.ext'
   | 'seo.opengraphImage.remoteFile.extension'
   | 'seo.opengraphImage.remoteFile.gid'
+  | 'seo.opengraphImage.remoteFile.hash'
   | 'seo.opengraphImage.remoteFile.id'
   | 'seo.opengraphImage.remoteFile.ino'
   | 'seo.opengraphImage.remoteFile.mode'
@@ -26942,7 +26943,6 @@ type tsPageFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
-  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -27048,6 +27048,7 @@ type tsPageFieldsEnum =
   | 'seo.twitterImage.localFile.ext'
   | 'seo.twitterImage.localFile.extension'
   | 'seo.twitterImage.localFile.gid'
+  | 'seo.twitterImage.localFile.hash'
   | 'seo.twitterImage.localFile.id'
   | 'seo.twitterImage.localFile.ino'
   | 'seo.twitterImage.localFile.mode'
@@ -27065,7 +27066,6 @@ type tsPageFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
-  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -27101,6 +27101,7 @@ type tsPageFieldsEnum =
   | 'seo.twitterImage.remoteFile.ext'
   | 'seo.twitterImage.remoteFile.extension'
   | 'seo.twitterImage.remoteFile.gid'
+  | 'seo.twitterImage.remoteFile.hash'
   | 'seo.twitterImage.remoteFile.id'
   | 'seo.twitterImage.remoteFile.ino'
   | 'seo.twitterImage.remoteFile.mode'
@@ -27118,7 +27119,6 @@ type tsPageFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
-  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -29795,6 +29795,7 @@ type tsPostFieldsEnum =
   | 'caseStudy.appGallery.localFile.ext'
   | 'caseStudy.appGallery.localFile.extension'
   | 'caseStudy.appGallery.localFile.gid'
+  | 'caseStudy.appGallery.localFile.hash'
   | 'caseStudy.appGallery.localFile.id'
   | 'caseStudy.appGallery.localFile.ino'
   | 'caseStudy.appGallery.localFile.mode'
@@ -29812,7 +29813,6 @@ type tsPostFieldsEnum =
   | 'caseStudy.appGallery.localFile.size'
   | 'caseStudy.appGallery.localFile.sourceInstanceName'
   | 'caseStudy.appGallery.localFile.uid'
-  | 'caseStudy.appGallery.localFile.url'
   | 'caseStudy.appGallery.mediaDetails.file'
   | 'caseStudy.appGallery.mediaDetails.height'
   | 'caseStudy.appGallery.mediaDetails.sizes'
@@ -29848,6 +29848,7 @@ type tsPostFieldsEnum =
   | 'caseStudy.appGallery.remoteFile.ext'
   | 'caseStudy.appGallery.remoteFile.extension'
   | 'caseStudy.appGallery.remoteFile.gid'
+  | 'caseStudy.appGallery.remoteFile.hash'
   | 'caseStudy.appGallery.remoteFile.id'
   | 'caseStudy.appGallery.remoteFile.ino'
   | 'caseStudy.appGallery.remoteFile.mode'
@@ -29865,7 +29866,6 @@ type tsPostFieldsEnum =
   | 'caseStudy.appGallery.remoteFile.size'
   | 'caseStudy.appGallery.remoteFile.sourceInstanceName'
   | 'caseStudy.appGallery.remoteFile.uid'
-  | 'caseStudy.appGallery.remoteFile.url'
   | 'caseStudy.appGallery.resize.height'
   | 'caseStudy.appGallery.resize.src'
   | 'caseStudy.appGallery.resize.width'
@@ -29958,6 +29958,7 @@ type tsPostFieldsEnum =
   | 'caseStudy.detailPageImage.localFile.ext'
   | 'caseStudy.detailPageImage.localFile.extension'
   | 'caseStudy.detailPageImage.localFile.gid'
+  | 'caseStudy.detailPageImage.localFile.hash'
   | 'caseStudy.detailPageImage.localFile.id'
   | 'caseStudy.detailPageImage.localFile.ino'
   | 'caseStudy.detailPageImage.localFile.mode'
@@ -29975,7 +29976,6 @@ type tsPostFieldsEnum =
   | 'caseStudy.detailPageImage.localFile.size'
   | 'caseStudy.detailPageImage.localFile.sourceInstanceName'
   | 'caseStudy.detailPageImage.localFile.uid'
-  | 'caseStudy.detailPageImage.localFile.url'
   | 'caseStudy.detailPageImage.mediaDetails.file'
   | 'caseStudy.detailPageImage.mediaDetails.height'
   | 'caseStudy.detailPageImage.mediaDetails.sizes'
@@ -30011,6 +30011,7 @@ type tsPostFieldsEnum =
   | 'caseStudy.detailPageImage.remoteFile.ext'
   | 'caseStudy.detailPageImage.remoteFile.extension'
   | 'caseStudy.detailPageImage.remoteFile.gid'
+  | 'caseStudy.detailPageImage.remoteFile.hash'
   | 'caseStudy.detailPageImage.remoteFile.id'
   | 'caseStudy.detailPageImage.remoteFile.ino'
   | 'caseStudy.detailPageImage.remoteFile.mode'
@@ -30028,7 +30029,6 @@ type tsPostFieldsEnum =
   | 'caseStudy.detailPageImage.remoteFile.size'
   | 'caseStudy.detailPageImage.remoteFile.sourceInstanceName'
   | 'caseStudy.detailPageImage.remoteFile.uid'
-  | 'caseStudy.detailPageImage.remoteFile.url'
   | 'caseStudy.detailPageImage.resize.height'
   | 'caseStudy.detailPageImage.resize.src'
   | 'caseStudy.detailPageImage.resize.width'
@@ -30123,6 +30123,7 @@ type tsPostFieldsEnum =
   | 'caseStudy.gallery.localFile.ext'
   | 'caseStudy.gallery.localFile.extension'
   | 'caseStudy.gallery.localFile.gid'
+  | 'caseStudy.gallery.localFile.hash'
   | 'caseStudy.gallery.localFile.id'
   | 'caseStudy.gallery.localFile.ino'
   | 'caseStudy.gallery.localFile.mode'
@@ -30140,7 +30141,6 @@ type tsPostFieldsEnum =
   | 'caseStudy.gallery.localFile.size'
   | 'caseStudy.gallery.localFile.sourceInstanceName'
   | 'caseStudy.gallery.localFile.uid'
-  | 'caseStudy.gallery.localFile.url'
   | 'caseStudy.gallery.mediaDetails.file'
   | 'caseStudy.gallery.mediaDetails.height'
   | 'caseStudy.gallery.mediaDetails.sizes'
@@ -30176,6 +30176,7 @@ type tsPostFieldsEnum =
   | 'caseStudy.gallery.remoteFile.ext'
   | 'caseStudy.gallery.remoteFile.extension'
   | 'caseStudy.gallery.remoteFile.gid'
+  | 'caseStudy.gallery.remoteFile.hash'
   | 'caseStudy.gallery.remoteFile.id'
   | 'caseStudy.gallery.remoteFile.ino'
   | 'caseStudy.gallery.remoteFile.mode'
@@ -30193,7 +30194,6 @@ type tsPostFieldsEnum =
   | 'caseStudy.gallery.remoteFile.size'
   | 'caseStudy.gallery.remoteFile.sourceInstanceName'
   | 'caseStudy.gallery.remoteFile.uid'
-  | 'caseStudy.gallery.remoteFile.url'
   | 'caseStudy.gallery.resize.height'
   | 'caseStudy.gallery.resize.src'
   | 'caseStudy.gallery.resize.width'
@@ -30290,6 +30290,7 @@ type tsPostFieldsEnum =
   | 'caseStudy.secondoryImage.localFile.ext'
   | 'caseStudy.secondoryImage.localFile.extension'
   | 'caseStudy.secondoryImage.localFile.gid'
+  | 'caseStudy.secondoryImage.localFile.hash'
   | 'caseStudy.secondoryImage.localFile.id'
   | 'caseStudy.secondoryImage.localFile.ino'
   | 'caseStudy.secondoryImage.localFile.mode'
@@ -30307,7 +30308,6 @@ type tsPostFieldsEnum =
   | 'caseStudy.secondoryImage.localFile.size'
   | 'caseStudy.secondoryImage.localFile.sourceInstanceName'
   | 'caseStudy.secondoryImage.localFile.uid'
-  | 'caseStudy.secondoryImage.localFile.url'
   | 'caseStudy.secondoryImage.mediaDetails.file'
   | 'caseStudy.secondoryImage.mediaDetails.height'
   | 'caseStudy.secondoryImage.mediaDetails.sizes'
@@ -30343,6 +30343,7 @@ type tsPostFieldsEnum =
   | 'caseStudy.secondoryImage.remoteFile.ext'
   | 'caseStudy.secondoryImage.remoteFile.extension'
   | 'caseStudy.secondoryImage.remoteFile.gid'
+  | 'caseStudy.secondoryImage.remoteFile.hash'
   | 'caseStudy.secondoryImage.remoteFile.id'
   | 'caseStudy.secondoryImage.remoteFile.ino'
   | 'caseStudy.secondoryImage.remoteFile.mode'
@@ -30360,7 +30361,6 @@ type tsPostFieldsEnum =
   | 'caseStudy.secondoryImage.remoteFile.size'
   | 'caseStudy.secondoryImage.remoteFile.sourceInstanceName'
   | 'caseStudy.secondoryImage.remoteFile.uid'
-  | 'caseStudy.secondoryImage.remoteFile.url'
   | 'caseStudy.secondoryImage.resize.height'
   | 'caseStudy.secondoryImage.resize.src'
   | 'caseStudy.secondoryImage.resize.width'
@@ -30669,6 +30669,7 @@ type tsPostFieldsEnum =
   | 'featuredImage.node.localFile.ext'
   | 'featuredImage.node.localFile.extension'
   | 'featuredImage.node.localFile.gid'
+  | 'featuredImage.node.localFile.hash'
   | 'featuredImage.node.localFile.id'
   | 'featuredImage.node.localFile.ino'
   | 'featuredImage.node.localFile.mode'
@@ -30686,7 +30687,6 @@ type tsPostFieldsEnum =
   | 'featuredImage.node.localFile.size'
   | 'featuredImage.node.localFile.sourceInstanceName'
   | 'featuredImage.node.localFile.uid'
-  | 'featuredImage.node.localFile.url'
   | 'featuredImage.node.mediaDetails.file'
   | 'featuredImage.node.mediaDetails.height'
   | 'featuredImage.node.mediaDetails.sizes'
@@ -30722,6 +30722,7 @@ type tsPostFieldsEnum =
   | 'featuredImage.node.remoteFile.ext'
   | 'featuredImage.node.remoteFile.extension'
   | 'featuredImage.node.remoteFile.gid'
+  | 'featuredImage.node.remoteFile.hash'
   | 'featuredImage.node.remoteFile.id'
   | 'featuredImage.node.remoteFile.ino'
   | 'featuredImage.node.remoteFile.mode'
@@ -30739,7 +30740,6 @@ type tsPostFieldsEnum =
   | 'featuredImage.node.remoteFile.size'
   | 'featuredImage.node.remoteFile.sourceInstanceName'
   | 'featuredImage.node.remoteFile.uid'
-  | 'featuredImage.node.remoteFile.url'
   | 'featuredImage.node.resize.height'
   | 'featuredImage.node.resize.src'
   | 'featuredImage.node.resize.width'
@@ -32796,6 +32796,7 @@ type tsPostFieldsEnum =
   | 'selectCaseStudy.listingPageImage.localFile.ext'
   | 'selectCaseStudy.listingPageImage.localFile.extension'
   | 'selectCaseStudy.listingPageImage.localFile.gid'
+  | 'selectCaseStudy.listingPageImage.localFile.hash'
   | 'selectCaseStudy.listingPageImage.localFile.id'
   | 'selectCaseStudy.listingPageImage.localFile.ino'
   | 'selectCaseStudy.listingPageImage.localFile.mode'
@@ -32813,7 +32814,6 @@ type tsPostFieldsEnum =
   | 'selectCaseStudy.listingPageImage.localFile.size'
   | 'selectCaseStudy.listingPageImage.localFile.sourceInstanceName'
   | 'selectCaseStudy.listingPageImage.localFile.uid'
-  | 'selectCaseStudy.listingPageImage.localFile.url'
   | 'selectCaseStudy.listingPageImage.mediaDetails.file'
   | 'selectCaseStudy.listingPageImage.mediaDetails.height'
   | 'selectCaseStudy.listingPageImage.mediaDetails.sizes'
@@ -32849,6 +32849,7 @@ type tsPostFieldsEnum =
   | 'selectCaseStudy.listingPageImage.remoteFile.ext'
   | 'selectCaseStudy.listingPageImage.remoteFile.extension'
   | 'selectCaseStudy.listingPageImage.remoteFile.gid'
+  | 'selectCaseStudy.listingPageImage.remoteFile.hash'
   | 'selectCaseStudy.listingPageImage.remoteFile.id'
   | 'selectCaseStudy.listingPageImage.remoteFile.ino'
   | 'selectCaseStudy.listingPageImage.remoteFile.mode'
@@ -32866,7 +32867,6 @@ type tsPostFieldsEnum =
   | 'selectCaseStudy.listingPageImage.remoteFile.size'
   | 'selectCaseStudy.listingPageImage.remoteFile.sourceInstanceName'
   | 'selectCaseStudy.listingPageImage.remoteFile.uid'
-  | 'selectCaseStudy.listingPageImage.remoteFile.url'
   | 'selectCaseStudy.listingPageImage.resize.height'
   | 'selectCaseStudy.listingPageImage.resize.src'
   | 'selectCaseStudy.listingPageImage.resize.width'
@@ -32972,6 +32972,7 @@ type tsPostFieldsEnum =
   | 'seo.opengraphImage.localFile.ext'
   | 'seo.opengraphImage.localFile.extension'
   | 'seo.opengraphImage.localFile.gid'
+  | 'seo.opengraphImage.localFile.hash'
   | 'seo.opengraphImage.localFile.id'
   | 'seo.opengraphImage.localFile.ino'
   | 'seo.opengraphImage.localFile.mode'
@@ -32989,7 +32990,6 @@ type tsPostFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
-  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -33025,6 +33025,7 @@ type tsPostFieldsEnum =
   | 'seo.opengraphImage.remoteFile.ext'
   | 'seo.opengraphImage.remoteFile.extension'
   | 'seo.opengraphImage.remoteFile.gid'
+  | 'seo.opengraphImage.remoteFile.hash'
   | 'seo.opengraphImage.remoteFile.id'
   | 'seo.opengraphImage.remoteFile.ino'
   | 'seo.opengraphImage.remoteFile.mode'
@@ -33042,7 +33043,6 @@ type tsPostFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
-  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -33148,6 +33148,7 @@ type tsPostFieldsEnum =
   | 'seo.twitterImage.localFile.ext'
   | 'seo.twitterImage.localFile.extension'
   | 'seo.twitterImage.localFile.gid'
+  | 'seo.twitterImage.localFile.hash'
   | 'seo.twitterImage.localFile.id'
   | 'seo.twitterImage.localFile.ino'
   | 'seo.twitterImage.localFile.mode'
@@ -33165,7 +33166,6 @@ type tsPostFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
-  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -33201,6 +33201,7 @@ type tsPostFieldsEnum =
   | 'seo.twitterImage.remoteFile.ext'
   | 'seo.twitterImage.remoteFile.extension'
   | 'seo.twitterImage.remoteFile.gid'
+  | 'seo.twitterImage.remoteFile.hash'
   | 'seo.twitterImage.remoteFile.id'
   | 'seo.twitterImage.remoteFile.ino'
   | 'seo.twitterImage.remoteFile.mode'
@@ -33218,7 +33219,6 @@ type tsPostFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
-  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -33862,6 +33862,7 @@ type tsPostFormatFieldsEnum =
   | 'seo.opengraphImage.localFile.ext'
   | 'seo.opengraphImage.localFile.extension'
   | 'seo.opengraphImage.localFile.gid'
+  | 'seo.opengraphImage.localFile.hash'
   | 'seo.opengraphImage.localFile.id'
   | 'seo.opengraphImage.localFile.ino'
   | 'seo.opengraphImage.localFile.mode'
@@ -33879,7 +33880,6 @@ type tsPostFormatFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
-  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -33915,6 +33915,7 @@ type tsPostFormatFieldsEnum =
   | 'seo.opengraphImage.remoteFile.ext'
   | 'seo.opengraphImage.remoteFile.extension'
   | 'seo.opengraphImage.remoteFile.gid'
+  | 'seo.opengraphImage.remoteFile.hash'
   | 'seo.opengraphImage.remoteFile.id'
   | 'seo.opengraphImage.remoteFile.ino'
   | 'seo.opengraphImage.remoteFile.mode'
@@ -33932,7 +33933,6 @@ type tsPostFormatFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
-  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -34035,6 +34035,7 @@ type tsPostFormatFieldsEnum =
   | 'seo.twitterImage.localFile.ext'
   | 'seo.twitterImage.localFile.extension'
   | 'seo.twitterImage.localFile.gid'
+  | 'seo.twitterImage.localFile.hash'
   | 'seo.twitterImage.localFile.id'
   | 'seo.twitterImage.localFile.ino'
   | 'seo.twitterImage.localFile.mode'
@@ -34052,7 +34053,6 @@ type tsPostFormatFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
-  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -34088,6 +34088,7 @@ type tsPostFormatFieldsEnum =
   | 'seo.twitterImage.remoteFile.ext'
   | 'seo.twitterImage.remoteFile.extension'
   | 'seo.twitterImage.remoteFile.gid'
+  | 'seo.twitterImage.remoteFile.hash'
   | 'seo.twitterImage.remoteFile.id'
   | 'seo.twitterImage.remoteFile.ino'
   | 'seo.twitterImage.remoteFile.mode'
@@ -34105,7 +34106,6 @@ type tsPostFormatFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
-  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -36188,6 +36188,7 @@ type tsSingleTestimonialCategoryFieldsEnum =
   | 'seo.opengraphImage.localFile.ext'
   | 'seo.opengraphImage.localFile.extension'
   | 'seo.opengraphImage.localFile.gid'
+  | 'seo.opengraphImage.localFile.hash'
   | 'seo.opengraphImage.localFile.id'
   | 'seo.opengraphImage.localFile.ino'
   | 'seo.opengraphImage.localFile.mode'
@@ -36205,7 +36206,6 @@ type tsSingleTestimonialCategoryFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
-  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -36241,6 +36241,7 @@ type tsSingleTestimonialCategoryFieldsEnum =
   | 'seo.opengraphImage.remoteFile.ext'
   | 'seo.opengraphImage.remoteFile.extension'
   | 'seo.opengraphImage.remoteFile.gid'
+  | 'seo.opengraphImage.remoteFile.hash'
   | 'seo.opengraphImage.remoteFile.id'
   | 'seo.opengraphImage.remoteFile.ino'
   | 'seo.opengraphImage.remoteFile.mode'
@@ -36258,7 +36259,6 @@ type tsSingleTestimonialCategoryFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
-  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -36361,6 +36361,7 @@ type tsSingleTestimonialCategoryFieldsEnum =
   | 'seo.twitterImage.localFile.ext'
   | 'seo.twitterImage.localFile.extension'
   | 'seo.twitterImage.localFile.gid'
+  | 'seo.twitterImage.localFile.hash'
   | 'seo.twitterImage.localFile.id'
   | 'seo.twitterImage.localFile.ino'
   | 'seo.twitterImage.localFile.mode'
@@ -36378,7 +36379,6 @@ type tsSingleTestimonialCategoryFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
-  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -36414,6 +36414,7 @@ type tsSingleTestimonialCategoryFieldsEnum =
   | 'seo.twitterImage.remoteFile.ext'
   | 'seo.twitterImage.remoteFile.extension'
   | 'seo.twitterImage.remoteFile.gid'
+  | 'seo.twitterImage.remoteFile.hash'
   | 'seo.twitterImage.remoteFile.id'
   | 'seo.twitterImage.remoteFile.ino'
   | 'seo.twitterImage.remoteFile.mode'
@@ -36431,7 +36432,6 @@ type tsSingleTestimonialCategoryFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
-  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -37301,6 +37301,7 @@ type tsTagFieldsEnum =
   | 'seo.opengraphImage.localFile.ext'
   | 'seo.opengraphImage.localFile.extension'
   | 'seo.opengraphImage.localFile.gid'
+  | 'seo.opengraphImage.localFile.hash'
   | 'seo.opengraphImage.localFile.id'
   | 'seo.opengraphImage.localFile.ino'
   | 'seo.opengraphImage.localFile.mode'
@@ -37318,7 +37319,6 @@ type tsTagFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
-  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -37354,6 +37354,7 @@ type tsTagFieldsEnum =
   | 'seo.opengraphImage.remoteFile.ext'
   | 'seo.opengraphImage.remoteFile.extension'
   | 'seo.opengraphImage.remoteFile.gid'
+  | 'seo.opengraphImage.remoteFile.hash'
   | 'seo.opengraphImage.remoteFile.id'
   | 'seo.opengraphImage.remoteFile.ino'
   | 'seo.opengraphImage.remoteFile.mode'
@@ -37371,7 +37372,6 @@ type tsTagFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
-  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -37474,6 +37474,7 @@ type tsTagFieldsEnum =
   | 'seo.twitterImage.localFile.ext'
   | 'seo.twitterImage.localFile.extension'
   | 'seo.twitterImage.localFile.gid'
+  | 'seo.twitterImage.localFile.hash'
   | 'seo.twitterImage.localFile.id'
   | 'seo.twitterImage.localFile.ino'
   | 'seo.twitterImage.localFile.mode'
@@ -37491,7 +37492,6 @@ type tsTagFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
-  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -37527,6 +37527,7 @@ type tsTagFieldsEnum =
   | 'seo.twitterImage.remoteFile.ext'
   | 'seo.twitterImage.remoteFile.extension'
   | 'seo.twitterImage.remoteFile.gid'
+  | 'seo.twitterImage.remoteFile.hash'
   | 'seo.twitterImage.remoteFile.id'
   | 'seo.twitterImage.remoteFile.ino'
   | 'seo.twitterImage.remoteFile.mode'
@@ -37544,7 +37545,6 @@ type tsTagFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
-  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -38611,6 +38611,7 @@ type tsTeamFieldsEnum =
   | 'featuredImage.node.localFile.ext'
   | 'featuredImage.node.localFile.extension'
   | 'featuredImage.node.localFile.gid'
+  | 'featuredImage.node.localFile.hash'
   | 'featuredImage.node.localFile.id'
   | 'featuredImage.node.localFile.ino'
   | 'featuredImage.node.localFile.mode'
@@ -38628,7 +38629,6 @@ type tsTeamFieldsEnum =
   | 'featuredImage.node.localFile.size'
   | 'featuredImage.node.localFile.sourceInstanceName'
   | 'featuredImage.node.localFile.uid'
-  | 'featuredImage.node.localFile.url'
   | 'featuredImage.node.mediaDetails.file'
   | 'featuredImage.node.mediaDetails.height'
   | 'featuredImage.node.mediaDetails.sizes'
@@ -38664,6 +38664,7 @@ type tsTeamFieldsEnum =
   | 'featuredImage.node.remoteFile.ext'
   | 'featuredImage.node.remoteFile.extension'
   | 'featuredImage.node.remoteFile.gid'
+  | 'featuredImage.node.remoteFile.hash'
   | 'featuredImage.node.remoteFile.id'
   | 'featuredImage.node.remoteFile.ino'
   | 'featuredImage.node.remoteFile.mode'
@@ -38681,7 +38682,6 @@ type tsTeamFieldsEnum =
   | 'featuredImage.node.remoteFile.size'
   | 'featuredImage.node.remoteFile.sourceInstanceName'
   | 'featuredImage.node.remoteFile.uid'
-  | 'featuredImage.node.remoteFile.url'
   | 'featuredImage.node.resize.height'
   | 'featuredImage.node.resize.src'
   | 'featuredImage.node.resize.width'
@@ -38911,6 +38911,7 @@ type tsTeamFieldsEnum =
   | 'seo.opengraphImage.localFile.ext'
   | 'seo.opengraphImage.localFile.extension'
   | 'seo.opengraphImage.localFile.gid'
+  | 'seo.opengraphImage.localFile.hash'
   | 'seo.opengraphImage.localFile.id'
   | 'seo.opengraphImage.localFile.ino'
   | 'seo.opengraphImage.localFile.mode'
@@ -38928,7 +38929,6 @@ type tsTeamFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
-  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -38964,6 +38964,7 @@ type tsTeamFieldsEnum =
   | 'seo.opengraphImage.remoteFile.ext'
   | 'seo.opengraphImage.remoteFile.extension'
   | 'seo.opengraphImage.remoteFile.gid'
+  | 'seo.opengraphImage.remoteFile.hash'
   | 'seo.opengraphImage.remoteFile.id'
   | 'seo.opengraphImage.remoteFile.ino'
   | 'seo.opengraphImage.remoteFile.mode'
@@ -38981,7 +38982,6 @@ type tsTeamFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
-  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -39087,6 +39087,7 @@ type tsTeamFieldsEnum =
   | 'seo.twitterImage.localFile.ext'
   | 'seo.twitterImage.localFile.extension'
   | 'seo.twitterImage.localFile.gid'
+  | 'seo.twitterImage.localFile.hash'
   | 'seo.twitterImage.localFile.id'
   | 'seo.twitterImage.localFile.ino'
   | 'seo.twitterImage.localFile.mode'
@@ -39104,7 +39105,6 @@ type tsTeamFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
-  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -39140,6 +39140,7 @@ type tsTeamFieldsEnum =
   | 'seo.twitterImage.remoteFile.ext'
   | 'seo.twitterImage.remoteFile.extension'
   | 'seo.twitterImage.remoteFile.gid'
+  | 'seo.twitterImage.remoteFile.hash'
   | 'seo.twitterImage.remoteFile.id'
   | 'seo.twitterImage.remoteFile.ino'
   | 'seo.twitterImage.remoteFile.mode'
@@ -39157,7 +39158,6 @@ type tsTeamFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
-  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -39878,6 +39878,7 @@ type tsTestimonialFieldsEnum =
   | 'TestimonialsForCaseStudies.image.localFile.ext'
   | 'TestimonialsForCaseStudies.image.localFile.extension'
   | 'TestimonialsForCaseStudies.image.localFile.gid'
+  | 'TestimonialsForCaseStudies.image.localFile.hash'
   | 'TestimonialsForCaseStudies.image.localFile.id'
   | 'TestimonialsForCaseStudies.image.localFile.ino'
   | 'TestimonialsForCaseStudies.image.localFile.mode'
@@ -39895,7 +39896,6 @@ type tsTestimonialFieldsEnum =
   | 'TestimonialsForCaseStudies.image.localFile.size'
   | 'TestimonialsForCaseStudies.image.localFile.sourceInstanceName'
   | 'TestimonialsForCaseStudies.image.localFile.uid'
-  | 'TestimonialsForCaseStudies.image.localFile.url'
   | 'TestimonialsForCaseStudies.image.mediaDetails.file'
   | 'TestimonialsForCaseStudies.image.mediaDetails.height'
   | 'TestimonialsForCaseStudies.image.mediaDetails.sizes'
@@ -39931,6 +39931,7 @@ type tsTestimonialFieldsEnum =
   | 'TestimonialsForCaseStudies.image.remoteFile.ext'
   | 'TestimonialsForCaseStudies.image.remoteFile.extension'
   | 'TestimonialsForCaseStudies.image.remoteFile.gid'
+  | 'TestimonialsForCaseStudies.image.remoteFile.hash'
   | 'TestimonialsForCaseStudies.image.remoteFile.id'
   | 'TestimonialsForCaseStudies.image.remoteFile.ino'
   | 'TestimonialsForCaseStudies.image.remoteFile.mode'
@@ -39948,7 +39949,6 @@ type tsTestimonialFieldsEnum =
   | 'TestimonialsForCaseStudies.image.remoteFile.size'
   | 'TestimonialsForCaseStudies.image.remoteFile.sourceInstanceName'
   | 'TestimonialsForCaseStudies.image.remoteFile.uid'
-  | 'TestimonialsForCaseStudies.image.remoteFile.url'
   | 'TestimonialsForCaseStudies.image.resize.height'
   | 'TestimonialsForCaseStudies.image.resize.src'
   | 'TestimonialsForCaseStudies.image.resize.width'
@@ -40220,6 +40220,7 @@ type tsTestimonialFieldsEnum =
   | 'featuredImage.node.localFile.ext'
   | 'featuredImage.node.localFile.extension'
   | 'featuredImage.node.localFile.gid'
+  | 'featuredImage.node.localFile.hash'
   | 'featuredImage.node.localFile.id'
   | 'featuredImage.node.localFile.ino'
   | 'featuredImage.node.localFile.mode'
@@ -40237,7 +40238,6 @@ type tsTestimonialFieldsEnum =
   | 'featuredImage.node.localFile.size'
   | 'featuredImage.node.localFile.sourceInstanceName'
   | 'featuredImage.node.localFile.uid'
-  | 'featuredImage.node.localFile.url'
   | 'featuredImage.node.mediaDetails.file'
   | 'featuredImage.node.mediaDetails.height'
   | 'featuredImage.node.mediaDetails.sizes'
@@ -40273,6 +40273,7 @@ type tsTestimonialFieldsEnum =
   | 'featuredImage.node.remoteFile.ext'
   | 'featuredImage.node.remoteFile.extension'
   | 'featuredImage.node.remoteFile.gid'
+  | 'featuredImage.node.remoteFile.hash'
   | 'featuredImage.node.remoteFile.id'
   | 'featuredImage.node.remoteFile.ino'
   | 'featuredImage.node.remoteFile.mode'
@@ -40290,7 +40291,6 @@ type tsTestimonialFieldsEnum =
   | 'featuredImage.node.remoteFile.size'
   | 'featuredImage.node.remoteFile.sourceInstanceName'
   | 'featuredImage.node.remoteFile.uid'
-  | 'featuredImage.node.remoteFile.url'
   | 'featuredImage.node.resize.height'
   | 'featuredImage.node.resize.src'
   | 'featuredImage.node.resize.width'
@@ -40520,6 +40520,7 @@ type tsTestimonialFieldsEnum =
   | 'seo.opengraphImage.localFile.ext'
   | 'seo.opengraphImage.localFile.extension'
   | 'seo.opengraphImage.localFile.gid'
+  | 'seo.opengraphImage.localFile.hash'
   | 'seo.opengraphImage.localFile.id'
   | 'seo.opengraphImage.localFile.ino'
   | 'seo.opengraphImage.localFile.mode'
@@ -40537,7 +40538,6 @@ type tsTestimonialFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
-  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -40573,6 +40573,7 @@ type tsTestimonialFieldsEnum =
   | 'seo.opengraphImage.remoteFile.ext'
   | 'seo.opengraphImage.remoteFile.extension'
   | 'seo.opengraphImage.remoteFile.gid'
+  | 'seo.opengraphImage.remoteFile.hash'
   | 'seo.opengraphImage.remoteFile.id'
   | 'seo.opengraphImage.remoteFile.ino'
   | 'seo.opengraphImage.remoteFile.mode'
@@ -40590,7 +40591,6 @@ type tsTestimonialFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
-  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -40696,6 +40696,7 @@ type tsTestimonialFieldsEnum =
   | 'seo.twitterImage.localFile.ext'
   | 'seo.twitterImage.localFile.extension'
   | 'seo.twitterImage.localFile.gid'
+  | 'seo.twitterImage.localFile.hash'
   | 'seo.twitterImage.localFile.id'
   | 'seo.twitterImage.localFile.ino'
   | 'seo.twitterImage.localFile.mode'
@@ -40713,7 +40714,6 @@ type tsTestimonialFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
-  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -40749,6 +40749,7 @@ type tsTestimonialFieldsEnum =
   | 'seo.twitterImage.remoteFile.ext'
   | 'seo.twitterImage.remoteFile.extension'
   | 'seo.twitterImage.remoteFile.gid'
+  | 'seo.twitterImage.remoteFile.hash'
   | 'seo.twitterImage.remoteFile.id'
   | 'seo.twitterImage.remoteFile.ino'
   | 'seo.twitterImage.remoteFile.mode'
@@ -40766,7 +40767,6 @@ type tsTestimonialFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
-  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -41692,6 +41692,7 @@ type tsUserFieldsEnum =
   | 'authorProfile.profile.localFile.ext'
   | 'authorProfile.profile.localFile.extension'
   | 'authorProfile.profile.localFile.gid'
+  | 'authorProfile.profile.localFile.hash'
   | 'authorProfile.profile.localFile.id'
   | 'authorProfile.profile.localFile.ino'
   | 'authorProfile.profile.localFile.mode'
@@ -41709,7 +41710,6 @@ type tsUserFieldsEnum =
   | 'authorProfile.profile.localFile.size'
   | 'authorProfile.profile.localFile.sourceInstanceName'
   | 'authorProfile.profile.localFile.uid'
-  | 'authorProfile.profile.localFile.url'
   | 'authorProfile.profile.mediaDetails.file'
   | 'authorProfile.profile.mediaDetails.height'
   | 'authorProfile.profile.mediaDetails.sizes'
@@ -41745,6 +41745,7 @@ type tsUserFieldsEnum =
   | 'authorProfile.profile.remoteFile.ext'
   | 'authorProfile.profile.remoteFile.extension'
   | 'authorProfile.profile.remoteFile.gid'
+  | 'authorProfile.profile.remoteFile.hash'
   | 'authorProfile.profile.remoteFile.id'
   | 'authorProfile.profile.remoteFile.ino'
   | 'authorProfile.profile.remoteFile.mode'
@@ -41762,7 +41763,6 @@ type tsUserFieldsEnum =
   | 'authorProfile.profile.remoteFile.size'
   | 'authorProfile.profile.remoteFile.sourceInstanceName'
   | 'authorProfile.profile.remoteFile.uid'
-  | 'authorProfile.profile.remoteFile.url'
   | 'authorProfile.profile.resize.height'
   | 'authorProfile.profile.resize.src'
   | 'authorProfile.profile.resize.width'
@@ -42254,6 +42254,7 @@ type tsUserFieldsEnum =
   | 'seo.opengraphImage.localFile.ext'
   | 'seo.opengraphImage.localFile.extension'
   | 'seo.opengraphImage.localFile.gid'
+  | 'seo.opengraphImage.localFile.hash'
   | 'seo.opengraphImage.localFile.id'
   | 'seo.opengraphImage.localFile.ino'
   | 'seo.opengraphImage.localFile.mode'
@@ -42271,7 +42272,6 @@ type tsUserFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
-  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -42307,6 +42307,7 @@ type tsUserFieldsEnum =
   | 'seo.opengraphImage.remoteFile.ext'
   | 'seo.opengraphImage.remoteFile.extension'
   | 'seo.opengraphImage.remoteFile.gid'
+  | 'seo.opengraphImage.remoteFile.hash'
   | 'seo.opengraphImage.remoteFile.id'
   | 'seo.opengraphImage.remoteFile.ino'
   | 'seo.opengraphImage.remoteFile.mode'
@@ -42324,7 +42325,6 @@ type tsUserFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
-  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -42433,6 +42433,7 @@ type tsUserFieldsEnum =
   | 'seo.twitterImage.localFile.ext'
   | 'seo.twitterImage.localFile.extension'
   | 'seo.twitterImage.localFile.gid'
+  | 'seo.twitterImage.localFile.hash'
   | 'seo.twitterImage.localFile.id'
   | 'seo.twitterImage.localFile.ino'
   | 'seo.twitterImage.localFile.mode'
@@ -42450,7 +42451,6 @@ type tsUserFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
-  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -42486,6 +42486,7 @@ type tsUserFieldsEnum =
   | 'seo.twitterImage.remoteFile.ext'
   | 'seo.twitterImage.remoteFile.extension'
   | 'seo.twitterImage.remoteFile.gid'
+  | 'seo.twitterImage.remoteFile.hash'
   | 'seo.twitterImage.remoteFile.id'
   | 'seo.twitterImage.remoteFile.ino'
   | 'seo.twitterImage.remoteFile.mode'
@@ -42503,7 +42504,6 @@ type tsUserFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
-  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -43061,6 +43061,96 @@ type MyQueryAccomplishmentsQueryVariables = Exact<{ [key: string]: never; }>;
 
 type MyQueryAccomplishmentsQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly companySnapshotHeading: string | null, readonly informationCounts: ReadonlyArray<{ readonly heading: string | null, readonly counts: number | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
 
+type MyQueryallCaseStudyPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryallCaseStudyPageQuery = { readonly allTsCaseStudy: { readonly edges: ReadonlyArray<{ readonly node: { readonly id: string, readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null, readonly detailPageImage: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly portfolio: { readonly listingPage: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null, readonly wpParent: { readonly node: { readonly name: string | null } | null } | null } | null> | null } | null } }> } };
+
+type MyQueryAllPostQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryAllPostQueryQuery = { readonly allTsPost: { readonly edges: ReadonlyArray<{ readonly node: { readonly title: string | null, readonly link: string | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } }> } };
+
+type MyQueryAndroidBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryAndroidBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryAndroidBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryAndroidBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryAndroidCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryAndroidCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryAndroidFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryAndroidFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryAndroidFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryAndroidFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryAndroidFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryAndroidFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryAndroidPlatformCapabilitesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryAndroidPlatformCapabilitesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryAndroidWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryAndroidWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryAngulaPlatformCapabilitiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryAngulaPlatformCapabilitiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryAngularBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryAngularBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryAngularBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryAngularBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryAngularCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryAngularCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryAngularFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryAngularFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryAngularFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryAngularFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryAngularFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryAngularFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryAngularWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryAngularWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
+
 type MyQueryB2BB2CFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -43106,6 +43196,53 @@ type MyQueryBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
 
 type MyQueryBannerSectionQuery = { readonly tsMenu: { readonly menuItems: { readonly nodes: ReadonlyArray<{ readonly label: string | null, readonly id: string, readonly url: string | null } | null> | null } | null } | null, readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly needCta: boolean | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
 
+type MyQueryBigCommerceBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryBigCommerceBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryBigCommerceBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryBigCommerceBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryBigCommerceCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryBigCommerceCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryBigCommerceFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryBigCommerceFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryBigCommerceFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryBigCommerceFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryBigCommerceFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryBigCommerceFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryBigCommercePlatformCapabilitiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryBigCommercePlatformCapabilitiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryBigCommerceWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryBigCommerceWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryBlogsDetailsPageQueryVariables = Exact<{
+  slug: InputMaybe<Scalars['String']>;
+}>;
+
+
+type MyQueryBlogsDetailsPageQuery = { readonly allTsPost: { readonly edges: ReadonlyArray<{ readonly node: { readonly title: string | null, readonly slug: string | null, readonly dateGmt: string | null, readonly content: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly selectCaseStudy: { readonly caseStudy: { readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly content: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly portfolio: { readonly backgroundGradient: string | null } | null } | null, readonly listingPageImage: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly next: { readonly link: string | null, readonly title: string | null, readonly slug: string | null } | null, readonly previous: { readonly link: string | null, readonly slug: string | null, readonly title: string | null } | null, readonly author: { readonly node: { readonly firstName: string | null, readonly lastName: string | null, readonly description: string | null, readonly authorProfile: { readonly profile: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly posts: { readonly nodes: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly slug: string | null, readonly link: string | null } | null> | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | null } | null> | null } | null } }> } };
+
 type MyQueryCapabilitiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -43126,10 +43263,107 @@ type MyQueryCareersOpenRolesSectionQueryVariables = Exact<{ [key: string]: never
 
 type MyQueryCareersOpenRolesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly fieldGroupName: string | null, readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly openRolesContents: ReadonlyArray<{ readonly heading: string | null, readonly positionsListing: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly content: string | null, readonly careers: { readonly jobLocation: string | null, readonly experience: string | null, readonly applyNowForThisPosition: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null } | null } | null> | null } | null> | null } | {} | null> | null } | null } | null };
 
+type MyQueryCaseStudiesChildCategoeryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryCaseStudiesChildCategoeryQuery = { readonly allTsCaseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly parentDatabaseId: number | null, readonly wpParent: { readonly node: { readonly name: string | null, readonly slug: string | null, readonly databaseId: number } | null } | null }> } };
+
+type MyQueryCaseStudyDetailsPageQueryVariables = Exact<{
+  slug: InputMaybe<Scalars['String']>;
+}>;
+
+
+type MyQueryCaseStudyDetailsPageQuery = { readonly tsCaseStudy: { readonly caseStudyDetailsPage: { readonly heading: string | null, readonly content: string | null, readonly featureHeading: string | null, readonly specialFeaturesHeading: string | null, readonly specialFeaturesContent: string | null, readonly clientSaysHeading: string | null, readonly tools: { readonly heading: string | null, readonly content: string | null } | null, readonly services: { readonly heading: string | null, readonly content: string | null } | null, readonly portfolioLinks: { readonly heading: string | null, readonly androidLink: string | null, readonly iosLink: string | null, readonly webLink: string | null } | null, readonly ourRoleSection: { readonly roleHeading: string | null, readonly roleContent: string | null } | null, readonly detailsPageImage: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null, readonly ourProcess: { readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | null, readonly featuresListsForApps: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null> | null, readonly featuresListsForWeb: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null> | null, readonly problemChallengesResultLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null, readonly weFollowAgile: { readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly name: string | null } | null> | null } | null } | null, readonly allTsTestimonial: { readonly edges: ReadonlyArray<{ readonly node: { readonly content: string | null, readonly title: string | null, readonly TestimonialsForCaseStudies: { readonly author: string | null, readonly company: string | null, readonly jobTitle: string | null, readonly content: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } }> } };
+
+type MyQueryCategoryPostQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryCategoryPostQuery = { readonly tsCategory: { readonly posts: { readonly nodes: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly featuredImage: { readonly node: { readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null, readonly count: number | null } | null> | null } | null } | null> | null } | null } | null };
+
+type MyQueryCommerceToolsBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryCommerceToolsBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryCommerceToolsBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryCommerceToolsBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryCommerceToolsCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryCommerceToolsCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryCommerceToolsFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryCommerceToolsFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryCommerceToolsFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryCommerceToolsFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryCommerceToolsFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryCommerceToolsFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryCommerceToolsPlatformCapabilitiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryCommerceToolsPlatformCapabilitiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryCommerceToolsWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryCommerceToolsWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
+
 type MyQueryContactPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type MyQueryContactPageQuery = { readonly ts: { readonly tsOptions: { readonly generaloptions: { readonly officeAddresses: ReadonlyArray<{ readonly title: string | null, readonly content: string | null } | null> | null, readonly enquireLists: ReadonlyArray<{ readonly title: string | null, readonly content: string | null } | null> | null } | null } | null } | null };
+
+type MyQueryCrossPlatformAppBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryCrossPlatformAppBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryCrossPlatformAppBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryCrossPlatformAppBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryCrossPlatformAppBenefitsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryCrossPlatformAppBenefitsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryCrossPlatformAppCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryCrossPlatformAppCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryCrossPlatformAppFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryCrossPlatformAppFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryCrossPlatformAppFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryCrossPlatformAppFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryCrossPlatformAppFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryCrossPlatformAppFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryCrossPlatformAppWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryCrossPlatformAppWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
 
 type MyQueryDigitalCommercceFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -43201,10 +43435,185 @@ type MyQueryDigitalProductWhoitsforSectionQueryVariables = Exact<{ [key: string]
 
 type MyQueryDigitalProductWhoitsforSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly pointsLists: ReadonlyArray<{ readonly pointContent: string | null } | null> | null, readonly gallery: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null } | {} | null> | null } | null } | null };
 
+type MyQueryDosAndDontsCaseStudySectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryDosAndDontsCaseStudySectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly needBackgroundColor: boolean | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryDosAndDontsMVPTemplateBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryDosAndDontsMVPTemplateBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly heading: string | null, readonly subHeading: string | null, readonly content: string | null, readonly contentsLists: string | null, readonly formSection: { readonly formTitle: string | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryDosAndDontsMVPTemplateDevelopmentSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryDosAndDontsMVPTemplateDevelopmentSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly technologyIcons: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryEcommerceBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryEcommerceBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryEcommerceBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryEcommerceBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryEcommerceBenefitsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryEcommerceBenefitsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryEcommerceCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryEcommerceCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryEcommerceFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryEcommerceFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryEcommerceFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryEcommerceFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryEcommerceFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryEcommerceFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryEcommerceWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryEcommerceWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
+
 type MyQueryEngagementmodelSectionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type MyQueryEngagementmodelSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly showCta: boolean | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly needHeading: boolean | null, readonly heading: string | null, readonly content: string | null, readonly needImage: boolean | null, readonly needCta: boolean | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryExpressjsBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryExpressjsBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryExpressjsBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryExpressjsBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryExpressjsBenefitsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryExpressjsBenefitsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryExpressjsCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryExpressjsCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryExpressjsFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryExpressjsFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryExpressjsFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryExpressjsFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryExpressjsFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryExpressjsFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryExpressjsWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryExpressjsWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryFintechBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryFintechBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryFintechBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryFintechBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryFintechCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryFintechCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryFintechFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryFintechFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryFintechFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryFintechFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryFintechFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryFintechFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryFintechPlatformCapabilitesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryFintechPlatformCapabilitesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryFintechWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryFintechWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryFlutterBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryFlutterBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryFlutterBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryFlutterBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryFlutterCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryFlutterCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryFlutterFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryFlutterFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryFlutterFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryFlutterFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryFlutterFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryFlutterFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryFlutterPlatformCapabilitesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryFlutterPlatformCapabilitesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryFlutterWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryFlutterWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
 
 type MyQueryfooter1QueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -43216,6 +43625,46 @@ type MyQueryGrowthstagesSectionQueryVariables = Exact<{ [key: string]: never; }>
 
 type MyQueryGrowthstagesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly growthStagesCta: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null, readonly image: string | null, readonly cta: { readonly target: string | null, readonly title: string | null, readonly url: string | null } | null } | null> | null } | {} | null> | null } | null } | null };
 
+type MyQueryHealthcareBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryHealthcareBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryHealthcareBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryHealthcareBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryHealthcareCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryHealthcareCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryHealthcareFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryHealthcareFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryHealthcareFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryHealthcareFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryHealthcareFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryHealthcareFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryHealthcarePlatformCapabilitesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryHealthcarePlatformCapabilitesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryHealthcareWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryHealthcareWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
+
 type MyQueryHeroBannerQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -43226,10 +43675,585 @@ type MyQueryHireDeveloperQueryVariables = Exact<{ [key: string]: never; }>;
 
 type MyQueryHireDeveloperQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly formHeading: string | null, readonly testimonialsHeading: string | null, readonly recognitionsHeading: string | null, readonly getInTouchHeading: string | null, readonly trustedByHeading: string | null } | {} | null> | null } | null } | null, readonly ts: { readonly tsOptions: { readonly generaloptions: { readonly trustedBy: ReadonlyArray<{ readonly logo: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null> | null, readonly recognition: ReadonlyArray<{ readonly logo: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null> | null } | null } | null } | null, readonly allTsTestimonial: { readonly edges: ReadonlyArray<{ readonly node: { readonly content: string | null, readonly title: string | null, readonly TestimonialsForCaseStudies: { readonly author: string | null, readonly company: string | null, readonly jobTitle: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } }> } };
 
+type MyQueryIonicBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryIonicBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryIonicBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryIonicBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryIonicCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryIonicCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryIonicFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryIonicFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryIonicFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryIonicFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryIonicFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryIonicFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryIonicPlatformCapabilitesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryIonicPlatformCapabilitesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryIonicWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryIonicWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryIosBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryIosBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryIosBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryIosBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryIosCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryIosCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryIosFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryIosFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryIosFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryIosFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryIosFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryIosFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryIosPlatformCapabilitesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryIosPlatformCapabilitesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryIosWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryIosWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryIotBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryIotBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryIotBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryIotBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryIotCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryIotCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryIotFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryIotFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryIotFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryIotFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryIotFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryIotFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryIotPlatformCapabilitesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryIotPlatformCapabilitesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryIotWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryIotWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryKotlinBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryKotlinBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryKotlinBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryKotlinBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryKotlinCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryKotlinCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryKotlinFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryKotlinFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryKotlinFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryKotlinFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryKotlinFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryKotlinFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryKotlinPlatformCapabilitesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryKotlinPlatformCapabilitesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryKotlinWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryKotlinWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryLaravelBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryLaravelBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryLaravelBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryLaravelBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryLaravelBenefitsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryLaravelBenefitsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryLaravelCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryLaravelCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryLaravelFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryLaravelFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryLaravelFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryLaravelFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryLaravelFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryLaravelFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryLaravelWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryLaravelWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
+
 type MyQueryLocationSectionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type MyQueryLocationSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly locationContents: ReadonlyArray<{ readonly location: string | null, readonly address: string | null } | null> | null, readonly locationImages: ReadonlyArray<{ readonly images: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryMagentoBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMagentoBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryMagentoBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMagentoBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryMagentoCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMagentoCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryMagentoFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMagentoFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryMagentoFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMagentoFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryMagentoFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMagentoFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryMagentoPlatformCapabilitiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMagentoPlatformCapabilitiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryMagentoWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMagentoWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryMobileAppBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMobileAppBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryMobileAppBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMobileAppBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryMobileAppCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMobileAppCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryMobileAppFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMobileAppFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryMobileAppFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMobileAppFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryMobileAppFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMobileAppFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryMobileAppPlatformCapabilitiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMobileAppPlatformCapabilitiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryMobileAppWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMobileAppWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryMOSBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMOSBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly heading: string | null, readonly subHeading: string | null, readonly content: string | null, readonly contentsLists: string | null, readonly formSection: { readonly formTitle: string | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryMoscowCaseStudySectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMoscowCaseStudySectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly needBackgroundColor: boolean | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryMoscowMVPDevelopmentSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMoscowMVPDevelopmentSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly technologyIcons: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryMOSMoscowPSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMOSMoscowPSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryMOSMoscowWhyDoYouNeedSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMOSMoscowWhyDoYouNeedSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryMOSMVariedSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMOSMVariedSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly heading: string | null, readonly subHeading: string | null, readonly content: string | null, readonly moscowPrioritizationCtas: ReadonlyArray<{ readonly initial: string | null, readonly title: string | null, readonly description: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryMvpBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMvpBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryMvpBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMvpBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryMvpCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMvpCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryMVPDevelopmentSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMVPDevelopmentSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly technologyIcons: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryMvpFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMvpFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryMvpFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMvpFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryMvpFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMvpFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryMvpIndustriesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMvpIndustriesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly heading: string | null, readonly industriesLists: ReadonlyArray<{ readonly title: string | null, readonly logo: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryMVPMVPTemplateBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMVPMVPTemplateBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly heading: string | null, readonly subHeading: string | null, readonly content: string | null, readonly contentsLists: string | null, readonly formSection: { readonly formTitle: string | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryMvpPlatformCapabilitiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMvpPlatformCapabilitiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryMVPSliderSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMVPSliderSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly needBackgroundColor: boolean | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryMvpWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryMvpWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryNestjsBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryNestjsBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryNestjsBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryNestjsBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryNestjsCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryNestjsCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryNestjsFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryNestjsFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryNestjsFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryNestjsFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryNestjsFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryNestjsFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryNestjsPlatformCapabilitiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryNestjsPlatformCapabilitiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryNestjsWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryNestjsWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryNodejsBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryNodejsBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryNodejsBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryNodejsBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryNodejsCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryNodejsCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryNodejsFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryNodejsFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryNodejsFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryNodejsFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryNodejsFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryNodejsFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryNodejsPlatformCapabilitiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryNodejsPlatformCapabilitiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryNodejsWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryNodejsWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryOffshoreBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryOffshoreBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryOffshoreBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryOffshoreBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryOffshoreCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryOffshoreCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryOffshoreFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryOffshoreFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryOffshoreFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryOffshoreFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryOffshoreFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryOffshoreFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryOffshorePlatformCapabilitiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryOffshorePlatformCapabilitiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryOffshoreWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryOffshoreWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryOnDemandBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryOnDemandBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryOnDemandBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryOnDemandBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryOnDemandCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryOnDemandCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryOnDemandFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryOnDemandFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryOnDemandFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryOnDemandFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryOnDemandFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryOnDemandFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryOnDemandPlatformCapabilitiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryOnDemandPlatformCapabilitiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryOnDemandWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryOnDemandWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryParentCategoryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryParentCategoryQuery = { readonly tsMenu: { readonly menuItems: { readonly nodes: ReadonlyArray<{ readonly label: string | null, readonly id: string, readonly url: string | null } | null> | null } | null } | null };
+
+type MyQueryPhpBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryPhpBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryPhpBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryPhpBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryPhpCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryPhpCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryPhpFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryPhpFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryPhpFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryPhpFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryPhpFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryPhpFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryPhpPlatformCapabilitiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryPhpPlatformCapabilitiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryPhpWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryPhpWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
 
 type MyQueryProcessPageQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -43240,6 +44264,86 @@ type MyQueryProjectStartupQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type MyQueryProjectStartupQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly formHeading: string | null, readonly testimonialsHeading: string | null, readonly recognitionsHeading: string | null, readonly getInTouchHeading: string | null, readonly trustedByHeading: string | null } | {} | null> | null } | null } | null, readonly ts: { readonly tsOptions: { readonly generaloptions: { readonly trustedBy: ReadonlyArray<{ readonly logo: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null> | null, readonly recognition: ReadonlyArray<{ readonly logo: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null> | null } | null } | null } | null, readonly allTsTestimonial: { readonly edges: ReadonlyArray<{ readonly node: { readonly content: string | null, readonly title: string | null, readonly TestimonialsForCaseStudies: { readonly author: string | null, readonly company: string | null, readonly jobTitle: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } }> } };
+
+type MyQueryReactjsBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryReactjsBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryReactjsBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryReactjsBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryReactjsCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryReactjsCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryReactjsFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryReactjsFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryReactjsFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryReactjsFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryReactjsFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryReactjsFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryReactjsPlatformCapabilitiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryReactjsPlatformCapabilitiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryReactjsWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryReactjsWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryReactNativeBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryReactNativeBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryReactNativeBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryReactNativeBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryReactNativeCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryReactNativeCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryReactNativeFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryReactNativeFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryReactNativeFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryReactNativeFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryReactNativeFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryReactNativeFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryReactNativePlatformCapabilitesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryReactNativePlatformCapabilitesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryReactNativeWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryReactNativeWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
 
 type MyQueryScaleBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -43301,6 +44405,141 @@ type MyQueryServicesSectionQueryVariables = Exact<{ [key: string]: never; }>;
 
 type MyQueryServicesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly servicesCta: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null> | null } | {} | null> | null } | null } | null };
 
+type MyQueryShopifyBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryShopifyBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryShopifyBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryShopifyBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryShopifyBenefitsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryShopifyBenefitsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryShopifyCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryShopifyCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryShopifyFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryShopifyFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryShopifyFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryShopifyFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryShopifyFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryShopifyFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryShopifyWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryShopifyWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryShopwareBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryShopwareBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryShopwareBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryShopwareBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryShopwareCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryShopwareCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryShopwareFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryShopwareFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryShopwareFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryShopwareFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryShopwareFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryShopwareFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryShopwarePlatformCapabilitesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryShopwarePlatformCapabilitesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryShopwareWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryShopwareWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryStaffAugmentationCaseStudySectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryStaffAugmentationCaseStudySectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly needBackgroundColor: boolean | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryStaffAugmentationMVPTemplateBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryStaffAugmentationMVPTemplateBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly heading: string | null, readonly subHeading: string | null, readonly content: string | null, readonly contentsLists: string | null, readonly formSection: { readonly formTitle: string | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryStaffAugmentationMVPTemplateDevelopmentSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryStaffAugmentationMVPTemplateDevelopmentSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly technologyIcons: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQuerySwiftBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQuerySwiftBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQuerySwiftBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQuerySwiftBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQuerySwiftCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQuerySwiftCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQuerySwiftFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQuerySwiftFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQuerySwiftFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQuerySwiftFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQuerySwiftFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQuerySwiftFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQuerySwiftPlatformCapabilitesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQuerySwiftPlatformCapabilitesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQuerySwiftWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQuerySwiftWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
+
 type MyQuerytestimonialQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -43311,20 +44550,270 @@ type MyQueryThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>
 
 type MyQueryThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
 
+type MyQueryTitleAndMenuThoughtspaceQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryTitleAndMenuThoughtspaceQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly heading: string | null } | {} | null> | null } | null } | null, readonly allTsCategory: { readonly edges: ReadonlyArray<{ readonly node: { readonly name: string | null, readonly link: string | null, readonly id: string, readonly slug: string | null, readonly databaseId: number } }> } };
+
+type MyQueryTravelBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryTravelBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryTravelBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryTravelBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryTravelBenefitsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryTravelBenefitsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryTravelCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryTravelCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryTravelFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryTravelFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryTravelFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryTravelFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryTravelFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryTravelFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryTravelWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryTravelWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
+
 type MyQueryTypesofCommerceSectionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type MyQueryTypesofCommerceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly showCta: boolean | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly needHeading: boolean | null, readonly heading: string | null, readonly content: string | null, readonly needImage: boolean | null, readonly needCta: boolean | null, readonly image: { readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryUIUXBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryUIUXBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryUIUXBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryUIUXBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryUIUXBenefitsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryUIUXBenefitsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryUIUXCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryUIUXCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryUIUXFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryUIUXFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryUIUXFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryUIUXFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryUIUXFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryUIUXFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryUIUXWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryUIUXWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryWebAppBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryWebAppBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryWebAppBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryWebAppBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryWebAppCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryWebAppCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryWebAppFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryWebAppFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryWebAppFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryWebAppFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryWebAppFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryWebAppFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryWebAppPlatformCapabilitesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryWebAppPlatformCapabilitesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryWebAppWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryWebAppWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
 
 type MyQueryWebsiteAuditSectionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type MyQueryWebsiteAuditSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly needCta: boolean | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
 
+type MyQueryWoocommerceBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryWoocommerceBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryWoocommerceBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryWoocommerceBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryWoocommerceBenefitsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryWoocommerceBenefitsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryWoocommerceCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryWoocommerceCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryWoocommerceFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryWoocommerceFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryWoocommerceFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryWoocommerceFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryWoocommerceFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryWoocommerceFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryWoocommerceWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryWoocommerceWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryWordPressBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryWordPressBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryWordPressBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryWordPressBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryWordPressBenefitsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryWordPressBenefitsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryWordPressCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryWordPressCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryWordPressFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryWordPressFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryWordPressFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryWordPressFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryWordPressFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryWordPressFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryWordPressWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryWordPressWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
+
 type MyQueryWorksSectionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type MyQueryWorksSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly caseStudy: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null } | null> | null } | null, readonly newCaseStudy: { readonly shortContent: string | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryXamarinBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryXamarinBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly image: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | {} | null> | null } | null } | null };
+
+type MyQueryXamarinBenefitSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryXamarinBenefitSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryXamarinCoreSpecialtiesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryXamarinCoreSpecialtiesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly content: string | null, readonly coreSpecialtiesPages: ReadonlyArray<{ readonly slug: string | null, readonly title: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryXamarinFAQSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryXamarinFAQSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryXamarinFeaturedThoughtspaceSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryXamarinFeaturedThoughtspaceSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly cta: { readonly title: string | null, readonly target: string | null, readonly url: string | null } | null, readonly relatedPosts: ReadonlyArray<{ readonly title: string | null, readonly slug: string | null, readonly link: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly link: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryXamarinFeaturedWorkSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryXamarinFeaturedWorkSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly featuredWorks: ReadonlyArray<{ readonly title: string | null, readonly link: string | null, readonly slug: string | null, readonly newCaseStudy: { readonly shortContent: string | null } | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null, readonly caseStudyCategory: { readonly nodes: ReadonlyArray<{ readonly link: string | null, readonly name: string | null, readonly slug: string | null } | null> | null } | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryXamarinPlatformCapabilitesSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryXamarinPlatformCapabilitesSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly backgroundColor: string | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null, readonly contentLists: ReadonlyArray<{ readonly heading: string | null, readonly content: string | null } | null> | null } | {} | null> | null } | null } | null };
+
+type MyQueryXamarinWhyUsSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MyQueryXamarinWhyUsSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly images: ReadonlyArray<{ readonly altText: string | null, readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
+
+type WorkMyQueryBannerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type WorkMyQueryBannerSectionQuery = { readonly tsPage: { readonly flexibleContent: { readonly flexibleContent: ReadonlyArray<{ readonly needBackgroundColor: boolean | null, readonly backgroundColor: string | null, readonly needLine: boolean | null, readonly lineHeading: string | null, readonly lineNumber: string | null, readonly heading: string | null, readonly content: string | null, readonly needCta: boolean | null, readonly image: { readonly gatsbyImage: import('gatsby-plugin-image').IGatsbyImageData | null } | null, readonly cta: { readonly title: string | null, readonly url: string | null, readonly target: string | null } | null } | {} | null> | null } | null } | null };
 
 
 }
