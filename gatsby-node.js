@@ -619,8 +619,8 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 
-  //create all casestudy pages
-  const OurWorkDetailsPage = path.resolve(`./src/template/WorkDetailsPage.tsx`);
+  // create all casestudy pages
+  // const OurWorkDetailsPage = path.resolve(`./src/template/WorkDetailsPage.tsx`);
   const OurWorkListingPage = path.resolve(`./src/template/Work.tsx`);
 
   const WorkPage = await graphql(`
@@ -646,42 +646,42 @@ exports.createPages = async ({ graphql, actions }) => {
   `);
 
   WorkPage.data.allTsCaseStudy.edges.forEach((edge) => {
-    if (edge.node.slug === "mybabyq") {
-      createPage({
-        path: `/our-work/${edge.node.slug}/`,
-        component: OurWorkDetailsPage,
-        context: {
-          id: edge.node.databaseId,
-          vid: edge.node.id,
-          slug: edge.node.slug,
-          title: edge.node.title,
-        },
-      });
-    }
-    if (edge.node.slug === "ecommerce-shopify-development-uk-amala-chai") {
-      createPage({
-        path: `/our-work/${edge.node.slug}/`,
-        component: OurWorkDetailsPage,
-        context: {
-          id: edge.node.databaseId,
-          vid: edge.node.id,
-          slug: edge.node.slug,
-          title: edge.node.title,
-        },
-      });
-    }
-    if (edge.node.slug === "sports-news-app-development") {
-      createPage({
-        path: `/our-work/${edge.node.slug}/`,
-        component: OurWorkDetailsPage,
-        context: {
-          id: edge.node.databaseId,
-          vid: edge.node.id,
-          slug: edge.node.slug,
-          title: edge.node.title,
-        },
-      });
-    }
+    // if (edge.node.slug === "mybabyq") {
+    //   createPage({
+    //     path: `/our-work/${edge.node.slug}/`,
+    //     component: OurWorkDetailsPage,
+    //     context: {
+    //       id: edge.node.databaseId,
+    //       vid: edge.node.id,
+    //       slug: edge.node.slug,
+    //       title: edge.node.title,
+    //     },
+    //   });
+    // }
+    // if (edge.node.slug === "ecommerce-shopify-development-uk-amala-chai") {
+    //   createPage({
+    //     path: `/our-work/${edge.node.slug}/`,
+    //     component: OurWorkDetailsPage,
+    //     context: {
+    //       id: edge.node.databaseId,
+    //       vid: edge.node.id,
+    //       slug: edge.node.slug,
+    //       title: edge.node.title,
+    //     },
+    //   });
+    // }
+    // if (edge.node.slug === "sports-news-app-development") {
+    //   createPage({
+    //     path: `/our-work/${edge.node.slug}/`,
+    //     component: OurWorkDetailsPage,
+    //     context: {
+    //       id: edge.node.databaseId,
+    //       vid: edge.node.id,
+    //       slug: edge.node.slug,
+    //       title: edge.node.title,
+    //     },
+    //   });
+    // }
 
     // createPage({
     //   path: `/our-work/${edge.node.slug}/`,
