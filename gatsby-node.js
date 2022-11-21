@@ -577,49 +577,49 @@ exports.createPages = async ({ graphql, actions }) => {
   });
 
   // create page for all post
-  // const ThoughtspaceDetailsPage = path.resolve(
-  //   `./src/template/thoughtspaceDetailsPage.tsx`
-  // );
-  // const Thoughtspace = path.resolve(`./src/template/thoughtspace.tsx`);
+  const ThoughtspaceDetailsPage = path.resolve(
+    `./src/template/thoughtspaceDetailsPage.tsx`
+  );
+  const Thoughtspace = path.resolve(`./src/template/thoughtspace.tsx`);
 
-  // const PostPage = await graphql(`
-  //   query {
-  //     allTsPost {
-  //       edges {
-  //         node {
-  //           id
-  //           slug
-  //           status
-  //           databaseId
-  //           title
-  //           categories {
-  //             nodes {
-  //               name
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // `);
-  // PostPage.data.allTsPost.edges.forEach((edge) => {
-  //   createPage({
-  //     path: `/thoughtspace/${edge.node.slug}/`,
-  //     component: ThoughtspaceDetailsPage,
-  //     context: {
-  //       id: edge.node.databaseId,
-  //       vid: edge.node.id,
-  //       slug: edge.node.slug,
-  //       title: edge.node.title,
-  //       category: edge.node.categories.nodes[0].name,
-  //     },
-  //   });
-  //   createPage({
-  //     path: `/thoughtspace/`,
-  //     component: Thoughtspace,
-  //     context: {},
-  //   });
-  // });
+  const PostPage = await graphql(`
+    query {
+      allTsPost {
+        edges {
+          node {
+            id
+            slug
+            status
+            databaseId
+            title
+            categories {
+              nodes {
+                name
+              }
+            }
+          }
+        }
+      }
+    }
+  `);
+  PostPage.data.allTsPost.edges.forEach((edge) => {
+    createPage({
+      path: `/thoughtspace/${edge.node.slug}/`,
+      component: ThoughtspaceDetailsPage,
+      context: {
+        id: edge.node.databaseId,
+        vid: edge.node.id,
+        slug: edge.node.slug,
+        title: edge.node.title,
+        category: edge.node.categories.nodes[0].name,
+      },
+    });
+    createPage({
+      path: `/thoughtspace/`,
+      component: Thoughtspace,
+      context: {},
+    });
+  });
 
   //create all casestudy pages
   // const OurWorkDetailsPage = path.resolve(`./src/template/WorkDetailsPage.tsx`);
