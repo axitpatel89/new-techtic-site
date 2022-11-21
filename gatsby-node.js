@@ -622,48 +622,48 @@ exports.createPages = async ({ graphql, actions }) => {
   });
 
   //create all casestudy pages
-  // const OurWorkDetailsPage = path.resolve(`./src/template/WorkDetailsPage.tsx`);
-  // const OurWorkListingPage = path.resolve(`./src/template/Work.tsx`);
+  const OurWorkDetailsPage = path.resolve(`./src/template/WorkDetailsPage.tsx`);
+  const OurWorkListingPage = path.resolve(`./src/template/Work.tsx`);
 
-  // const WorkPage = await graphql(`
-  //   query {
-  //     allTsCaseStudy {
-  //       edges {
-  //         node {
-  //           id
-  //           slug
-  //           status
-  //           databaseId
-  //           title
-  //           caseStudyCategory {
-  //             nodes {
-  //               name
-  //               link
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // `);
+  const WorkPage = await graphql(`
+    query {
+      allTsCaseStudy {
+        edges {
+          node {
+            id
+            slug
+            status
+            databaseId
+            title
+            caseStudyCategory {
+              nodes {
+                name
+                link
+              }
+            }
+          }
+        }
+      }
+    }
+  `);
 
-  // WorkPage.data.allTsCaseStudy.edges.forEach((edge) => {
-  //   createPage({
-  //     path: `/our-work/${edge.node.slug}/`,
-  //     component: OurWorkDetailsPage,
-  //     context: {
-  //       id: edge.node.databaseId,
-  //       vid: edge.node.id,
-  //       slug: edge.node.slug,
-  //       title: edge.node.title,
-  //     },
-  //   });
-  //   createPage({
-  //     path: `/our-work/`,
-  //     component: OurWorkListingPage,
-  //     context: {},
-  //   });
-  // });
+  WorkPage.data.allTsCaseStudy.edges.forEach((edge) => {
+    createPage({
+      path: `/our-work/${edge.node.slug}/`,
+      component: OurWorkDetailsPage,
+      context: {
+        id: edge.node.databaseId,
+        vid: edge.node.id,
+        slug: edge.node.slug,
+        title: edge.node.title,
+      },
+    });
+    createPage({
+      path: `/our-work/`,
+      component: OurWorkListingPage,
+      context: {},
+    });
+  });
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
