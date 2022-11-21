@@ -124,9 +124,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const DosAndDontsOfExperienceDesignPage = path.resolve(
     `src/template/dosAndDontsOfExperienceDesign.tsx`
   );
-  const ProcessPage = path.resolve(
-    `src/template/process.tsx`
-  );
+  const ProcessPage = path.resolve(`src/template/process.tsx`);
 
   const result = await graphql(`
     query {
@@ -648,16 +646,53 @@ exports.createPages = async ({ graphql, actions }) => {
   `);
 
   WorkPage.data.allTsCaseStudy.edges.forEach((edge) => {
-    createPage({
-      path: `/our-work/${edge.node.slug}/`,
-      component: OurWorkDetailsPage,
-      context: {
-        id: edge.node.databaseId,
-        vid: edge.node.id,
-        slug: edge.node.slug,
-        title: edge.node.title,
-      },
-    });
+    if (edge.node.slug === "mybabyq") {
+      createPage({
+        path: `/our-work/${edge.node.slug}/`,
+        component: OurWorkDetailsPage,
+        context: {
+          id: edge.node.databaseId,
+          vid: edge.node.id,
+          slug: edge.node.slug,
+          title: edge.node.title,
+        },
+      });
+    }
+    if (edge.node.slug === "ecommerce-shopify-development-uk-amala-chai") {
+      createPage({
+        path: `/our-work/${edge.node.slug}/`,
+        component: OurWorkDetailsPage,
+        context: {
+          id: edge.node.databaseId,
+          vid: edge.node.id,
+          slug: edge.node.slug,
+          title: edge.node.title,
+        },
+      });
+    }
+    if (edge.node.slug === "sports-news-app-development") {
+      createPage({
+        path: `/our-work/${edge.node.slug}/`,
+        component: OurWorkDetailsPage,
+        context: {
+          id: edge.node.databaseId,
+          vid: edge.node.id,
+          slug: edge.node.slug,
+          title: edge.node.title,
+        },
+      });
+    }
+
+    // createPage({
+    //   path: `/our-work/${edge.node.slug}/`,
+    //   component: OurWorkDetailsPage,
+    //   context: {
+    //     id: edge.node.databaseId,
+    //     vid: edge.node.id,
+    //     slug: edge.node.slug,
+    //     title: edge.node.title,
+    //   },
+    // });
     createPage({
       path: `/our-work/`,
       component: OurWorkListingPage,
