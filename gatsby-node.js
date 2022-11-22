@@ -1,6 +1,18 @@
 const _ = require("lodash");
 const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
+const FilterWarningsPlugin = require("webpack-filter-warnings-plugin");
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    plugins: [
+      new FilterWarningsPlugin({
+        exclude:
+          /mini-css-extract-plugin[^]*Conflicting order. Following module has been added:/,
+      }),
+    ],
+  });
+};
 
 exports.onPostBuild = ({ reporter }) => {
   reporter.info(`Your Gatsby site has been built!`);
@@ -621,84 +633,47 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // create all casestudy pages
   // const OurWorkDetailsPage = path.resolve(`./src/template/WorkDetailsPage.tsx`);
-  const OurWorkListingPage = path.resolve(`./src/template/Work.tsx`);
+  // const OurWorkListingPage = path.resolve(`./src/template/Work.tsx`);
 
-  const WorkPage = await graphql(`
-    query {
-      allTsCaseStudy {
-        edges {
-          node {
-            id
-            slug
-            status
-            databaseId
-            title
-            caseStudyCategory {
-              nodes {
-                name
-                link
-              }
-            }
-          }
-        }
-      }
-    }
-  `);
+  // const WorkPage = await graphql(`
+  //   query {
+  //     allTsCaseStudy {
+  //       edges {
+  //         node {
+  //           id
+  //           slug
+  //           status
+  //           databaseId
+  //           title
+  //           caseStudyCategory {
+  //             nodes {
+  //               name
+  //               link
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // `);
 
-  WorkPage.data.allTsCaseStudy.edges.forEach((edge) => {
-    // if (edge.node.slug === "mybabyq") {
-    //   createPage({
-    //     path: `/our-work/${edge.node.slug}/`,
-    //     component: OurWorkDetailsPage,
-    //     context: {
-    //       id: edge.node.databaseId,
-    //       vid: edge.node.id,
-    //       slug: edge.node.slug,
-    //       title: edge.node.title,
-    //     },
-    //   });
-    // }
-    // if (edge.node.slug === "ecommerce-shopify-development-uk-amala-chai") {
-    //   createPage({
-    //     path: `/our-work/${edge.node.slug}/`,
-    //     component: OurWorkDetailsPage,
-    //     context: {
-    //       id: edge.node.databaseId,
-    //       vid: edge.node.id,
-    //       slug: edge.node.slug,
-    //       title: edge.node.title,
-    //     },
-    //   });
-    // }
-    // if (edge.node.slug === "sports-news-app-development") {
-    //   createPage({
-    //     path: `/our-work/${edge.node.slug}/`,
-    //     component: OurWorkDetailsPage,
-    //     context: {
-    //       id: edge.node.databaseId,
-    //       vid: edge.node.id,
-    //       slug: edge.node.slug,
-    //       title: edge.node.title,
-    //     },
-    //   });
-    // }
-
-    // createPage({
-    //   path: `/our-work/${edge.node.slug}/`,
-    //   component: OurWorkDetailsPage,
-    //   context: {
-    //     id: edge.node.databaseId,
-    //     vid: edge.node.id,
-    //     slug: edge.node.slug,
-    //     title: edge.node.title,
-    //   },
-    // });
-    createPage({
-      path: `/our-work/`,
-      component: OurWorkListingPage,
-      context: {},
-    });
-  });
+  // WorkPage.data.allTsCaseStudy.edges.forEach((edge) => {
+  //   createPage({
+  //     path: `/our-work/${edge.node.slug}/`,
+  //     component: OurWorkDetailsPage,
+  //     context: {
+  //       id: edge.node.databaseId,
+  //       vid: edge.node.id,
+  //       slug: edge.node.slug,
+  //       title: edge.node.title,
+  //     },
+  //   });
+  //   createPage({
+  //     path: `/our-work/`,
+  //     component: OurWorkListingPage,
+  //     context: {},
+  //   });
+  // });
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
