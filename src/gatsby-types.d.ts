@@ -463,6 +463,7 @@ type File = Node & {
   readonly size: Scalars['Int'];
   readonly sourceInstanceName: Scalars['String'];
   readonly uid: Scalars['Int'];
+  readonly url: Maybe<Scalars['String']>;
 };
 
 
@@ -841,7 +842,8 @@ type FileFieldsEnum =
   | 'root'
   | 'size'
   | 'sourceInstanceName'
-  | 'uid';
+  | 'uid'
+  | 'url';
 
 type FileFilterInput = {
   readonly absolutePath: InputMaybe<StringQueryOperatorInput>;
@@ -885,6 +887,7 @@ type FileFilterInput = {
   readonly size: InputMaybe<IntQueryOperatorInput>;
   readonly sourceInstanceName: InputMaybe<StringQueryOperatorInput>;
   readonly uid: InputMaybe<IntQueryOperatorInput>;
+  readonly url: InputMaybe<StringQueryOperatorInput>;
 };
 
 type FileGroupConnection = {
@@ -2149,6 +2152,7 @@ type Query = {
   readonly allSiteFunction: SiteFunctionConnection;
   readonly allSitePage: SitePageConnection;
   readonly allSitePlugin: SitePluginConnection;
+  readonly allStaticImage: StaticImageConnection;
   readonly allTs: tsConnection;
   readonly allTsCareers: tsCareersConnection;
   readonly allTsCareersCategory: tsCareersCategoryConnection;
@@ -2188,6 +2192,7 @@ type Query = {
   readonly siteFunction: Maybe<SiteFunction>;
   readonly sitePage: Maybe<SitePage>;
   readonly sitePlugin: Maybe<SitePlugin>;
+  readonly staticImage: Maybe<StaticImage>;
   readonly ts: Maybe<ts>;
   readonly tsCareers: Maybe<tsCareers>;
   readonly tsCareersCategory: Maybe<tsCareersCategory>;
@@ -2297,6 +2302,14 @@ type Query_allSitePluginArgs = {
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
   sort: InputMaybe<SitePluginSortInput>;
+};
+
+
+type Query_allStaticImageArgs = {
+  filter: InputMaybe<StaticImageFilterInput>;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+  sort: InputMaybe<StaticImageSortInput>;
 };
 
 
@@ -2613,6 +2626,7 @@ type Query_fileArgs = {
   size: InputMaybe<IntQueryOperatorInput>;
   sourceInstanceName: InputMaybe<StringQueryOperatorInput>;
   uid: InputMaybe<IntQueryOperatorInput>;
+  url: InputMaybe<StringQueryOperatorInput>;
 };
 
 
@@ -2736,6 +2750,46 @@ type Query_sitePluginArgs = {
   resolve: InputMaybe<StringQueryOperatorInput>;
   ssrAPIs: InputMaybe<StringQueryOperatorInput>;
   version: InputMaybe<StringQueryOperatorInput>;
+};
+
+
+type Query_staticImageArgs = {
+  absolutePath: InputMaybe<StringQueryOperatorInput>;
+  accessTime: InputMaybe<DateQueryOperatorInput>;
+  atime: InputMaybe<DateQueryOperatorInput>;
+  atimeMs: InputMaybe<FloatQueryOperatorInput>;
+  base: InputMaybe<StringQueryOperatorInput>;
+  birthTime: InputMaybe<DateQueryOperatorInput>;
+  birthtime: InputMaybe<DateQueryOperatorInput>;
+  birthtimeMs: InputMaybe<FloatQueryOperatorInput>;
+  blksize: InputMaybe<IntQueryOperatorInput>;
+  blocks: InputMaybe<IntQueryOperatorInput>;
+  changeTime: InputMaybe<DateQueryOperatorInput>;
+  children: InputMaybe<NodeFilterListInput>;
+  ctime: InputMaybe<DateQueryOperatorInput>;
+  ctimeMs: InputMaybe<FloatQueryOperatorInput>;
+  dev: InputMaybe<FloatQueryOperatorInput>;
+  dir: InputMaybe<StringQueryOperatorInput>;
+  ext: InputMaybe<StringQueryOperatorInput>;
+  extension: InputMaybe<StringQueryOperatorInput>;
+  id: InputMaybe<StringQueryOperatorInput>;
+  ino: InputMaybe<FloatQueryOperatorInput>;
+  internal: InputMaybe<InternalFilterInput>;
+  mode: InputMaybe<IntQueryOperatorInput>;
+  modifiedTime: InputMaybe<DateQueryOperatorInput>;
+  mtime: InputMaybe<DateQueryOperatorInput>;
+  mtimeMs: InputMaybe<FloatQueryOperatorInput>;
+  name: InputMaybe<StringQueryOperatorInput>;
+  nlink: InputMaybe<IntQueryOperatorInput>;
+  parent: InputMaybe<NodeFilterInput>;
+  prettySize: InputMaybe<StringQueryOperatorInput>;
+  rdev: InputMaybe<IntQueryOperatorInput>;
+  relativeDirectory: InputMaybe<StringQueryOperatorInput>;
+  relativePath: InputMaybe<StringQueryOperatorInput>;
+  root: InputMaybe<StringQueryOperatorInput>;
+  size: InputMaybe<IntQueryOperatorInput>;
+  sourceInstanceName: InputMaybe<StringQueryOperatorInput>;
+  uid: InputMaybe<IntQueryOperatorInput>;
 };
 
 
@@ -4953,6 +5007,366 @@ type SortOrderEnum =
   | 'ASC'
   | 'DESC';
 
+type StaticImage = Node & {
+  readonly absolutePath: Maybe<Scalars['String']>;
+  readonly accessTime: Maybe<Scalars['Date']>;
+  readonly atime: Maybe<Scalars['Date']>;
+  readonly atimeMs: Maybe<Scalars['Float']>;
+  readonly base: Maybe<Scalars['String']>;
+  readonly birthTime: Maybe<Scalars['Date']>;
+  readonly birthtime: Maybe<Scalars['Date']>;
+  readonly birthtimeMs: Maybe<Scalars['Float']>;
+  readonly blksize: Maybe<Scalars['Int']>;
+  readonly blocks: Maybe<Scalars['Int']>;
+  readonly changeTime: Maybe<Scalars['Date']>;
+  readonly children: ReadonlyArray<Node>;
+  readonly ctime: Maybe<Scalars['Date']>;
+  readonly ctimeMs: Maybe<Scalars['Float']>;
+  readonly dev: Maybe<Scalars['Float']>;
+  readonly dir: Maybe<Scalars['String']>;
+  readonly ext: Maybe<Scalars['String']>;
+  readonly extension: Maybe<Scalars['String']>;
+  readonly id: Scalars['ID'];
+  readonly ino: Maybe<Scalars['Float']>;
+  readonly internal: Internal;
+  readonly mode: Maybe<Scalars['Int']>;
+  readonly modifiedTime: Maybe<Scalars['Date']>;
+  readonly mtime: Maybe<Scalars['Date']>;
+  readonly mtimeMs: Maybe<Scalars['Float']>;
+  readonly name: Maybe<Scalars['String']>;
+  readonly nlink: Maybe<Scalars['Int']>;
+  readonly parent: Maybe<Node>;
+  readonly prettySize: Maybe<Scalars['String']>;
+  readonly rdev: Maybe<Scalars['Int']>;
+  readonly relativeDirectory: Maybe<Scalars['String']>;
+  readonly relativePath: Maybe<Scalars['String']>;
+  readonly root: Maybe<Scalars['String']>;
+  readonly size: Maybe<Scalars['Int']>;
+  readonly sourceInstanceName: Maybe<Scalars['String']>;
+  readonly uid: Maybe<Scalars['Int']>;
+};
+
+
+type StaticImage_accessTimeArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+type StaticImage_atimeArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+type StaticImage_birthTimeArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+type StaticImage_birthtimeArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+type StaticImage_changeTimeArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+type StaticImage_ctimeArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+type StaticImage_modifiedTimeArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+type StaticImage_mtimeArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+type StaticImageConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<StaticImageEdge>;
+  readonly group: ReadonlyArray<StaticImageGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<StaticImage>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type StaticImageConnection_distinctArgs = {
+  field: StaticImageFieldsEnum;
+};
+
+
+type StaticImageConnection_groupArgs = {
+  field: StaticImageFieldsEnum;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type StaticImageConnection_maxArgs = {
+  field: StaticImageFieldsEnum;
+};
+
+
+type StaticImageConnection_minArgs = {
+  field: StaticImageFieldsEnum;
+};
+
+
+type StaticImageConnection_sumArgs = {
+  field: StaticImageFieldsEnum;
+};
+
+type StaticImageEdge = {
+  readonly next: Maybe<StaticImage>;
+  readonly node: StaticImage;
+  readonly previous: Maybe<StaticImage>;
+};
+
+type StaticImageFieldsEnum =
+  | 'absolutePath'
+  | 'accessTime'
+  | 'atime'
+  | 'atimeMs'
+  | 'base'
+  | 'birthTime'
+  | 'birthtime'
+  | 'birthtimeMs'
+  | 'blksize'
+  | 'blocks'
+  | 'changeTime'
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'ctime'
+  | 'ctimeMs'
+  | 'dev'
+  | 'dir'
+  | 'ext'
+  | 'extension'
+  | 'id'
+  | 'ino'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'mode'
+  | 'modifiedTime'
+  | 'mtime'
+  | 'mtimeMs'
+  | 'name'
+  | 'nlink'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'prettySize'
+  | 'rdev'
+  | 'relativeDirectory'
+  | 'relativePath'
+  | 'root'
+  | 'size'
+  | 'sourceInstanceName'
+  | 'uid';
+
+type StaticImageFilterInput = {
+  readonly absolutePath: InputMaybe<StringQueryOperatorInput>;
+  readonly accessTime: InputMaybe<DateQueryOperatorInput>;
+  readonly atime: InputMaybe<DateQueryOperatorInput>;
+  readonly atimeMs: InputMaybe<FloatQueryOperatorInput>;
+  readonly base: InputMaybe<StringQueryOperatorInput>;
+  readonly birthTime: InputMaybe<DateQueryOperatorInput>;
+  readonly birthtime: InputMaybe<DateQueryOperatorInput>;
+  readonly birthtimeMs: InputMaybe<FloatQueryOperatorInput>;
+  readonly blksize: InputMaybe<IntQueryOperatorInput>;
+  readonly blocks: InputMaybe<IntQueryOperatorInput>;
+  readonly changeTime: InputMaybe<DateQueryOperatorInput>;
+  readonly children: InputMaybe<NodeFilterListInput>;
+  readonly ctime: InputMaybe<DateQueryOperatorInput>;
+  readonly ctimeMs: InputMaybe<FloatQueryOperatorInput>;
+  readonly dev: InputMaybe<FloatQueryOperatorInput>;
+  readonly dir: InputMaybe<StringQueryOperatorInput>;
+  readonly ext: InputMaybe<StringQueryOperatorInput>;
+  readonly extension: InputMaybe<StringQueryOperatorInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+  readonly ino: InputMaybe<FloatQueryOperatorInput>;
+  readonly internal: InputMaybe<InternalFilterInput>;
+  readonly mode: InputMaybe<IntQueryOperatorInput>;
+  readonly modifiedTime: InputMaybe<DateQueryOperatorInput>;
+  readonly mtime: InputMaybe<DateQueryOperatorInput>;
+  readonly mtimeMs: InputMaybe<FloatQueryOperatorInput>;
+  readonly name: InputMaybe<StringQueryOperatorInput>;
+  readonly nlink: InputMaybe<IntQueryOperatorInput>;
+  readonly parent: InputMaybe<NodeFilterInput>;
+  readonly prettySize: InputMaybe<StringQueryOperatorInput>;
+  readonly rdev: InputMaybe<IntQueryOperatorInput>;
+  readonly relativeDirectory: InputMaybe<StringQueryOperatorInput>;
+  readonly relativePath: InputMaybe<StringQueryOperatorInput>;
+  readonly root: InputMaybe<StringQueryOperatorInput>;
+  readonly size: InputMaybe<IntQueryOperatorInput>;
+  readonly sourceInstanceName: InputMaybe<StringQueryOperatorInput>;
+  readonly uid: InputMaybe<IntQueryOperatorInput>;
+};
+
+type StaticImageGroupConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<StaticImageEdge>;
+  readonly field: Scalars['String'];
+  readonly fieldValue: Maybe<Scalars['String']>;
+  readonly group: ReadonlyArray<StaticImageGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<StaticImage>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type StaticImageGroupConnection_distinctArgs = {
+  field: StaticImageFieldsEnum;
+};
+
+
+type StaticImageGroupConnection_groupArgs = {
+  field: StaticImageFieldsEnum;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type StaticImageGroupConnection_maxArgs = {
+  field: StaticImageFieldsEnum;
+};
+
+
+type StaticImageGroupConnection_minArgs = {
+  field: StaticImageFieldsEnum;
+};
+
+
+type StaticImageGroupConnection_sumArgs = {
+  field: StaticImageFieldsEnum;
+};
+
+type StaticImageSortInput = {
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<StaticImageFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
+};
+
 type StringQueryOperatorInput = {
   readonly eq: InputMaybe<Scalars['String']>;
   readonly glob: InputMaybe<Scalars['String']>;
@@ -6214,6 +6628,7 @@ type tsCareersCategoryFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
+  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -6267,6 +6682,7 @@ type tsCareersCategoryFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
+  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -6387,6 +6803,7 @@ type tsCareersCategoryFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
+  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -6440,6 +6857,7 @@ type tsCareersCategoryFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
+  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -7127,6 +7545,7 @@ type tsCareersFieldsEnum =
   | 'featuredImage.node.localFile.size'
   | 'featuredImage.node.localFile.sourceInstanceName'
   | 'featuredImage.node.localFile.uid'
+  | 'featuredImage.node.localFile.url'
   | 'featuredImage.node.mediaDetails.file'
   | 'featuredImage.node.mediaDetails.height'
   | 'featuredImage.node.mediaDetails.sizes'
@@ -7180,6 +7599,7 @@ type tsCareersFieldsEnum =
   | 'featuredImage.node.remoteFile.size'
   | 'featuredImage.node.remoteFile.sourceInstanceName'
   | 'featuredImage.node.remoteFile.uid'
+  | 'featuredImage.node.remoteFile.url'
   | 'featuredImage.node.resize.height'
   | 'featuredImage.node.resize.src'
   | 'featuredImage.node.resize.width'
@@ -7427,6 +7847,7 @@ type tsCareersFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
+  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -7480,6 +7901,7 @@ type tsCareersFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
+  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -7603,6 +8025,7 @@ type tsCareersFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
+  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -7656,6 +8079,7 @@ type tsCareersFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
+  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -8559,6 +8983,7 @@ type tsCaseStudyCategoryFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
+  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -8612,6 +9037,7 @@ type tsCaseStudyCategoryFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
+  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -8732,6 +9158,7 @@ type tsCaseStudyCategoryFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
+  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -8785,6 +9212,7 @@ type tsCaseStudyCategoryFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
+  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -9339,6 +9767,7 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudyDetailsPage.detailsPageImage.localFile.size'
   | 'caseStudyDetailsPage.detailsPageImage.localFile.sourceInstanceName'
   | 'caseStudyDetailsPage.detailsPageImage.localFile.uid'
+  | 'caseStudyDetailsPage.detailsPageImage.localFile.url'
   | 'caseStudyDetailsPage.detailsPageImage.mediaDetails.file'
   | 'caseStudyDetailsPage.detailsPageImage.mediaDetails.height'
   | 'caseStudyDetailsPage.detailsPageImage.mediaDetails.sizes'
@@ -9392,6 +9821,7 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudyDetailsPage.detailsPageImage.remoteFile.size'
   | 'caseStudyDetailsPage.detailsPageImage.remoteFile.sourceInstanceName'
   | 'caseStudyDetailsPage.detailsPageImage.remoteFile.uid'
+  | 'caseStudyDetailsPage.detailsPageImage.remoteFile.url'
   | 'caseStudyDetailsPage.detailsPageImage.resize.height'
   | 'caseStudyDetailsPage.detailsPageImage.resize.src'
   | 'caseStudyDetailsPage.detailsPageImage.resize.width'
@@ -9684,6 +10114,7 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudy.appGallery.localFile.size'
   | 'caseStudy.appGallery.localFile.sourceInstanceName'
   | 'caseStudy.appGallery.localFile.uid'
+  | 'caseStudy.appGallery.localFile.url'
   | 'caseStudy.appGallery.mediaDetails.file'
   | 'caseStudy.appGallery.mediaDetails.height'
   | 'caseStudy.appGallery.mediaDetails.sizes'
@@ -9737,6 +10168,7 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudy.appGallery.remoteFile.size'
   | 'caseStudy.appGallery.remoteFile.sourceInstanceName'
   | 'caseStudy.appGallery.remoteFile.uid'
+  | 'caseStudy.appGallery.remoteFile.url'
   | 'caseStudy.appGallery.resize.height'
   | 'caseStudy.appGallery.resize.src'
   | 'caseStudy.appGallery.resize.width'
@@ -9847,6 +10279,7 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudy.detailPageImage.localFile.size'
   | 'caseStudy.detailPageImage.localFile.sourceInstanceName'
   | 'caseStudy.detailPageImage.localFile.uid'
+  | 'caseStudy.detailPageImage.localFile.url'
   | 'caseStudy.detailPageImage.mediaDetails.file'
   | 'caseStudy.detailPageImage.mediaDetails.height'
   | 'caseStudy.detailPageImage.mediaDetails.sizes'
@@ -9900,6 +10333,7 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudy.detailPageImage.remoteFile.size'
   | 'caseStudy.detailPageImage.remoteFile.sourceInstanceName'
   | 'caseStudy.detailPageImage.remoteFile.uid'
+  | 'caseStudy.detailPageImage.remoteFile.url'
   | 'caseStudy.detailPageImage.resize.height'
   | 'caseStudy.detailPageImage.resize.src'
   | 'caseStudy.detailPageImage.resize.width'
@@ -10012,6 +10446,7 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudy.gallery.localFile.size'
   | 'caseStudy.gallery.localFile.sourceInstanceName'
   | 'caseStudy.gallery.localFile.uid'
+  | 'caseStudy.gallery.localFile.url'
   | 'caseStudy.gallery.mediaDetails.file'
   | 'caseStudy.gallery.mediaDetails.height'
   | 'caseStudy.gallery.mediaDetails.sizes'
@@ -10065,6 +10500,7 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudy.gallery.remoteFile.size'
   | 'caseStudy.gallery.remoteFile.sourceInstanceName'
   | 'caseStudy.gallery.remoteFile.uid'
+  | 'caseStudy.gallery.remoteFile.url'
   | 'caseStudy.gallery.resize.height'
   | 'caseStudy.gallery.resize.src'
   | 'caseStudy.gallery.resize.width'
@@ -10179,6 +10615,7 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudy.secondoryImage.localFile.size'
   | 'caseStudy.secondoryImage.localFile.sourceInstanceName'
   | 'caseStudy.secondoryImage.localFile.uid'
+  | 'caseStudy.secondoryImage.localFile.url'
   | 'caseStudy.secondoryImage.mediaDetails.file'
   | 'caseStudy.secondoryImage.mediaDetails.height'
   | 'caseStudy.secondoryImage.mediaDetails.sizes'
@@ -10232,6 +10669,7 @@ type tsCaseStudyFieldsEnum =
   | 'caseStudy.secondoryImage.remoteFile.size'
   | 'caseStudy.secondoryImage.remoteFile.sourceInstanceName'
   | 'caseStudy.secondoryImage.remoteFile.uid'
+  | 'caseStudy.secondoryImage.remoteFile.url'
   | 'caseStudy.secondoryImage.resize.height'
   | 'caseStudy.secondoryImage.resize.src'
   | 'caseStudy.secondoryImage.resize.width'
@@ -10470,6 +10908,7 @@ type tsCaseStudyFieldsEnum =
   | 'featuredImage.node.localFile.size'
   | 'featuredImage.node.localFile.sourceInstanceName'
   | 'featuredImage.node.localFile.uid'
+  | 'featuredImage.node.localFile.url'
   | 'featuredImage.node.mediaDetails.file'
   | 'featuredImage.node.mediaDetails.height'
   | 'featuredImage.node.mediaDetails.sizes'
@@ -10523,6 +10962,7 @@ type tsCaseStudyFieldsEnum =
   | 'featuredImage.node.remoteFile.size'
   | 'featuredImage.node.remoteFile.sourceInstanceName'
   | 'featuredImage.node.remoteFile.uid'
+  | 'featuredImage.node.remoteFile.url'
   | 'featuredImage.node.resize.height'
   | 'featuredImage.node.resize.src'
   | 'featuredImage.node.resize.width'
@@ -10712,6 +11152,7 @@ type tsCaseStudyFieldsEnum =
   | 'newCaseStudy.detailPageImage.localFile.size'
   | 'newCaseStudy.detailPageImage.localFile.sourceInstanceName'
   | 'newCaseStudy.detailPageImage.localFile.uid'
+  | 'newCaseStudy.detailPageImage.localFile.url'
   | 'newCaseStudy.detailPageImage.mediaDetails.file'
   | 'newCaseStudy.detailPageImage.mediaDetails.height'
   | 'newCaseStudy.detailPageImage.mediaDetails.sizes'
@@ -10765,6 +11206,7 @@ type tsCaseStudyFieldsEnum =
   | 'newCaseStudy.detailPageImage.remoteFile.size'
   | 'newCaseStudy.detailPageImage.remoteFile.sourceInstanceName'
   | 'newCaseStudy.detailPageImage.remoteFile.uid'
+  | 'newCaseStudy.detailPageImage.remoteFile.url'
   | 'newCaseStudy.detailPageImage.resize.height'
   | 'newCaseStudy.detailPageImage.resize.src'
   | 'newCaseStudy.detailPageImage.resize.width'
@@ -10877,6 +11319,7 @@ type tsCaseStudyFieldsEnum =
   | 'newCaseStudy.ppcPage.localFile.size'
   | 'newCaseStudy.ppcPage.localFile.sourceInstanceName'
   | 'newCaseStudy.ppcPage.localFile.uid'
+  | 'newCaseStudy.ppcPage.localFile.url'
   | 'newCaseStudy.ppcPage.mediaDetails.file'
   | 'newCaseStudy.ppcPage.mediaDetails.height'
   | 'newCaseStudy.ppcPage.mediaDetails.sizes'
@@ -10930,6 +11373,7 @@ type tsCaseStudyFieldsEnum =
   | 'newCaseStudy.ppcPage.remoteFile.size'
   | 'newCaseStudy.ppcPage.remoteFile.sourceInstanceName'
   | 'newCaseStudy.ppcPage.remoteFile.uid'
+  | 'newCaseStudy.ppcPage.remoteFile.url'
   | 'newCaseStudy.ppcPage.resize.height'
   | 'newCaseStudy.ppcPage.resize.src'
   | 'newCaseStudy.ppcPage.resize.width'
@@ -11182,6 +11626,7 @@ type tsCaseStudyFieldsEnum =
   | 'portfolio.listingPage.localFile.size'
   | 'portfolio.listingPage.localFile.sourceInstanceName'
   | 'portfolio.listingPage.localFile.uid'
+  | 'portfolio.listingPage.localFile.url'
   | 'portfolio.listingPage.mediaDetails.file'
   | 'portfolio.listingPage.mediaDetails.height'
   | 'portfolio.listingPage.mediaDetails.sizes'
@@ -11235,6 +11680,7 @@ type tsCaseStudyFieldsEnum =
   | 'portfolio.listingPage.remoteFile.size'
   | 'portfolio.listingPage.remoteFile.sourceInstanceName'
   | 'portfolio.listingPage.remoteFile.uid'
+  | 'portfolio.listingPage.remoteFile.url'
   | 'portfolio.listingPage.resize.height'
   | 'portfolio.listingPage.resize.src'
   | 'portfolio.listingPage.resize.width'
@@ -11349,6 +11795,7 @@ type tsCaseStudyFieldsEnum =
   | 'portfolio.startupTemplateImage.localFile.size'
   | 'portfolio.startupTemplateImage.localFile.sourceInstanceName'
   | 'portfolio.startupTemplateImage.localFile.uid'
+  | 'portfolio.startupTemplateImage.localFile.url'
   | 'portfolio.startupTemplateImage.mediaDetails.file'
   | 'portfolio.startupTemplateImage.mediaDetails.height'
   | 'portfolio.startupTemplateImage.mediaDetails.sizes'
@@ -11402,6 +11849,7 @@ type tsCaseStudyFieldsEnum =
   | 'portfolio.startupTemplateImage.remoteFile.size'
   | 'portfolio.startupTemplateImage.remoteFile.sourceInstanceName'
   | 'portfolio.startupTemplateImage.remoteFile.uid'
+  | 'portfolio.startupTemplateImage.remoteFile.url'
   | 'portfolio.startupTemplateImage.resize.height'
   | 'portfolio.startupTemplateImage.resize.src'
   | 'portfolio.startupTemplateImage.resize.width'
@@ -11525,6 +11973,7 @@ type tsCaseStudyFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
+  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -11578,6 +12027,7 @@ type tsCaseStudyFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
+  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -11701,6 +12151,7 @@ type tsCaseStudyFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
+  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -11754,6 +12205,7 @@ type tsCaseStudyFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
+  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -12437,6 +12889,7 @@ type tsCaseStudyTypeFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
+  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -12490,6 +12943,7 @@ type tsCaseStudyTypeFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
+  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -12610,6 +13064,7 @@ type tsCaseStudyTypeFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
+  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -12663,6 +13118,7 @@ type tsCaseStudyTypeFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
+  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -13920,6 +14376,7 @@ type tsCategoryFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
+  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -13973,6 +14430,7 @@ type tsCategoryFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
+  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -14093,6 +14551,7 @@ type tsCategoryFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
+  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -14146,6 +14605,7 @@ type tsCategoryFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
+  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -15861,6 +16321,7 @@ type tsContentNodeFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
+  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -15914,6 +16375,7 @@ type tsContentNodeFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
+  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -16037,6 +16499,7 @@ type tsContentNodeFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
+  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -16090,6 +16553,7 @@ type tsContentNodeFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
+  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -24076,6 +24540,7 @@ type tsMediaItemFieldsEnum =
   | 'localFile.size'
   | 'localFile.sourceInstanceName'
   | 'localFile.uid'
+  | 'localFile.url'
   | 'mediaDetails.file'
   | 'mediaDetails.height'
   | 'mediaDetails.meta.aperture'
@@ -24320,6 +24785,7 @@ type tsMediaItemFieldsEnum =
   | 'remoteFile.size'
   | 'remoteFile.sourceInstanceName'
   | 'remoteFile.uid'
+  | 'remoteFile.url'
   | 'resize.height'
   | 'resize.src'
   | 'resize.width'
@@ -24411,6 +24877,7 @@ type tsMediaItemFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
+  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -24464,6 +24931,7 @@ type tsMediaItemFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
+  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -24587,6 +25055,7 @@ type tsMediaItemFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
+  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -24640,6 +25109,7 @@ type tsMediaItemFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
+  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -26585,6 +27055,7 @@ type tsPageFieldsEnum =
   | 'featuredImage.node.localFile.size'
   | 'featuredImage.node.localFile.sourceInstanceName'
   | 'featuredImage.node.localFile.uid'
+  | 'featuredImage.node.localFile.url'
   | 'featuredImage.node.mediaDetails.file'
   | 'featuredImage.node.mediaDetails.height'
   | 'featuredImage.node.mediaDetails.sizes'
@@ -26638,6 +27109,7 @@ type tsPageFieldsEnum =
   | 'featuredImage.node.remoteFile.size'
   | 'featuredImage.node.remoteFile.sourceInstanceName'
   | 'featuredImage.node.remoteFile.uid'
+  | 'featuredImage.node.remoteFile.url'
   | 'featuredImage.node.resize.height'
   | 'featuredImage.node.resize.src'
   | 'featuredImage.node.resize.width'
@@ -26890,6 +27362,7 @@ type tsPageFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
+  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -26943,6 +27416,7 @@ type tsPageFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
+  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -27066,6 +27540,7 @@ type tsPageFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
+  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -27119,6 +27594,7 @@ type tsPageFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
+  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -29813,6 +30289,7 @@ type tsPostFieldsEnum =
   | 'caseStudy.appGallery.localFile.size'
   | 'caseStudy.appGallery.localFile.sourceInstanceName'
   | 'caseStudy.appGallery.localFile.uid'
+  | 'caseStudy.appGallery.localFile.url'
   | 'caseStudy.appGallery.mediaDetails.file'
   | 'caseStudy.appGallery.mediaDetails.height'
   | 'caseStudy.appGallery.mediaDetails.sizes'
@@ -29866,6 +30343,7 @@ type tsPostFieldsEnum =
   | 'caseStudy.appGallery.remoteFile.size'
   | 'caseStudy.appGallery.remoteFile.sourceInstanceName'
   | 'caseStudy.appGallery.remoteFile.uid'
+  | 'caseStudy.appGallery.remoteFile.url'
   | 'caseStudy.appGallery.resize.height'
   | 'caseStudy.appGallery.resize.src'
   | 'caseStudy.appGallery.resize.width'
@@ -29976,6 +30454,7 @@ type tsPostFieldsEnum =
   | 'caseStudy.detailPageImage.localFile.size'
   | 'caseStudy.detailPageImage.localFile.sourceInstanceName'
   | 'caseStudy.detailPageImage.localFile.uid'
+  | 'caseStudy.detailPageImage.localFile.url'
   | 'caseStudy.detailPageImage.mediaDetails.file'
   | 'caseStudy.detailPageImage.mediaDetails.height'
   | 'caseStudy.detailPageImage.mediaDetails.sizes'
@@ -30029,6 +30508,7 @@ type tsPostFieldsEnum =
   | 'caseStudy.detailPageImage.remoteFile.size'
   | 'caseStudy.detailPageImage.remoteFile.sourceInstanceName'
   | 'caseStudy.detailPageImage.remoteFile.uid'
+  | 'caseStudy.detailPageImage.remoteFile.url'
   | 'caseStudy.detailPageImage.resize.height'
   | 'caseStudy.detailPageImage.resize.src'
   | 'caseStudy.detailPageImage.resize.width'
@@ -30141,6 +30621,7 @@ type tsPostFieldsEnum =
   | 'caseStudy.gallery.localFile.size'
   | 'caseStudy.gallery.localFile.sourceInstanceName'
   | 'caseStudy.gallery.localFile.uid'
+  | 'caseStudy.gallery.localFile.url'
   | 'caseStudy.gallery.mediaDetails.file'
   | 'caseStudy.gallery.mediaDetails.height'
   | 'caseStudy.gallery.mediaDetails.sizes'
@@ -30194,6 +30675,7 @@ type tsPostFieldsEnum =
   | 'caseStudy.gallery.remoteFile.size'
   | 'caseStudy.gallery.remoteFile.sourceInstanceName'
   | 'caseStudy.gallery.remoteFile.uid'
+  | 'caseStudy.gallery.remoteFile.url'
   | 'caseStudy.gallery.resize.height'
   | 'caseStudy.gallery.resize.src'
   | 'caseStudy.gallery.resize.width'
@@ -30308,6 +30790,7 @@ type tsPostFieldsEnum =
   | 'caseStudy.secondoryImage.localFile.size'
   | 'caseStudy.secondoryImage.localFile.sourceInstanceName'
   | 'caseStudy.secondoryImage.localFile.uid'
+  | 'caseStudy.secondoryImage.localFile.url'
   | 'caseStudy.secondoryImage.mediaDetails.file'
   | 'caseStudy.secondoryImage.mediaDetails.height'
   | 'caseStudy.secondoryImage.mediaDetails.sizes'
@@ -30361,6 +30844,7 @@ type tsPostFieldsEnum =
   | 'caseStudy.secondoryImage.remoteFile.size'
   | 'caseStudy.secondoryImage.remoteFile.sourceInstanceName'
   | 'caseStudy.secondoryImage.remoteFile.uid'
+  | 'caseStudy.secondoryImage.remoteFile.url'
   | 'caseStudy.secondoryImage.resize.height'
   | 'caseStudy.secondoryImage.resize.src'
   | 'caseStudy.secondoryImage.resize.width'
@@ -30687,6 +31171,7 @@ type tsPostFieldsEnum =
   | 'featuredImage.node.localFile.size'
   | 'featuredImage.node.localFile.sourceInstanceName'
   | 'featuredImage.node.localFile.uid'
+  | 'featuredImage.node.localFile.url'
   | 'featuredImage.node.mediaDetails.file'
   | 'featuredImage.node.mediaDetails.height'
   | 'featuredImage.node.mediaDetails.sizes'
@@ -30740,6 +31225,7 @@ type tsPostFieldsEnum =
   | 'featuredImage.node.remoteFile.size'
   | 'featuredImage.node.remoteFile.sourceInstanceName'
   | 'featuredImage.node.remoteFile.uid'
+  | 'featuredImage.node.remoteFile.url'
   | 'featuredImage.node.resize.height'
   | 'featuredImage.node.resize.src'
   | 'featuredImage.node.resize.width'
@@ -32814,6 +33300,7 @@ type tsPostFieldsEnum =
   | 'selectCaseStudy.listingPageImage.localFile.size'
   | 'selectCaseStudy.listingPageImage.localFile.sourceInstanceName'
   | 'selectCaseStudy.listingPageImage.localFile.uid'
+  | 'selectCaseStudy.listingPageImage.localFile.url'
   | 'selectCaseStudy.listingPageImage.mediaDetails.file'
   | 'selectCaseStudy.listingPageImage.mediaDetails.height'
   | 'selectCaseStudy.listingPageImage.mediaDetails.sizes'
@@ -32867,6 +33354,7 @@ type tsPostFieldsEnum =
   | 'selectCaseStudy.listingPageImage.remoteFile.size'
   | 'selectCaseStudy.listingPageImage.remoteFile.sourceInstanceName'
   | 'selectCaseStudy.listingPageImage.remoteFile.uid'
+  | 'selectCaseStudy.listingPageImage.remoteFile.url'
   | 'selectCaseStudy.listingPageImage.resize.height'
   | 'selectCaseStudy.listingPageImage.resize.src'
   | 'selectCaseStudy.listingPageImage.resize.width'
@@ -32990,6 +33478,7 @@ type tsPostFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
+  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -33043,6 +33532,7 @@ type tsPostFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
+  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -33166,6 +33656,7 @@ type tsPostFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
+  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -33219,6 +33710,7 @@ type tsPostFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
+  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -33880,6 +34372,7 @@ type tsPostFormatFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
+  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -33933,6 +34426,7 @@ type tsPostFormatFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
+  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -34053,6 +34547,7 @@ type tsPostFormatFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
+  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -34106,6 +34601,7 @@ type tsPostFormatFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
+  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -36206,6 +36702,7 @@ type tsSingleTestimonialCategoryFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
+  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -36259,6 +36756,7 @@ type tsSingleTestimonialCategoryFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
+  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -36379,6 +36877,7 @@ type tsSingleTestimonialCategoryFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
+  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -36432,6 +36931,7 @@ type tsSingleTestimonialCategoryFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
+  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -37319,6 +37819,7 @@ type tsTagFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
+  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -37372,6 +37873,7 @@ type tsTagFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
+  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -37492,6 +37994,7 @@ type tsTagFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
+  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -37545,6 +38048,7 @@ type tsTagFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
+  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -38629,6 +39133,7 @@ type tsTeamFieldsEnum =
   | 'featuredImage.node.localFile.size'
   | 'featuredImage.node.localFile.sourceInstanceName'
   | 'featuredImage.node.localFile.uid'
+  | 'featuredImage.node.localFile.url'
   | 'featuredImage.node.mediaDetails.file'
   | 'featuredImage.node.mediaDetails.height'
   | 'featuredImage.node.mediaDetails.sizes'
@@ -38682,6 +39187,7 @@ type tsTeamFieldsEnum =
   | 'featuredImage.node.remoteFile.size'
   | 'featuredImage.node.remoteFile.sourceInstanceName'
   | 'featuredImage.node.remoteFile.uid'
+  | 'featuredImage.node.remoteFile.url'
   | 'featuredImage.node.resize.height'
   | 'featuredImage.node.resize.src'
   | 'featuredImage.node.resize.width'
@@ -38929,6 +39435,7 @@ type tsTeamFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
+  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -38982,6 +39489,7 @@ type tsTeamFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
+  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -39105,6 +39613,7 @@ type tsTeamFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
+  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -39158,6 +39667,7 @@ type tsTeamFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
+  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -39896,6 +40406,7 @@ type tsTestimonialFieldsEnum =
   | 'TestimonialsForCaseStudies.image.localFile.size'
   | 'TestimonialsForCaseStudies.image.localFile.sourceInstanceName'
   | 'TestimonialsForCaseStudies.image.localFile.uid'
+  | 'TestimonialsForCaseStudies.image.localFile.url'
   | 'TestimonialsForCaseStudies.image.mediaDetails.file'
   | 'TestimonialsForCaseStudies.image.mediaDetails.height'
   | 'TestimonialsForCaseStudies.image.mediaDetails.sizes'
@@ -39949,6 +40460,7 @@ type tsTestimonialFieldsEnum =
   | 'TestimonialsForCaseStudies.image.remoteFile.size'
   | 'TestimonialsForCaseStudies.image.remoteFile.sourceInstanceName'
   | 'TestimonialsForCaseStudies.image.remoteFile.uid'
+  | 'TestimonialsForCaseStudies.image.remoteFile.url'
   | 'TestimonialsForCaseStudies.image.resize.height'
   | 'TestimonialsForCaseStudies.image.resize.src'
   | 'TestimonialsForCaseStudies.image.resize.width'
@@ -40238,6 +40750,7 @@ type tsTestimonialFieldsEnum =
   | 'featuredImage.node.localFile.size'
   | 'featuredImage.node.localFile.sourceInstanceName'
   | 'featuredImage.node.localFile.uid'
+  | 'featuredImage.node.localFile.url'
   | 'featuredImage.node.mediaDetails.file'
   | 'featuredImage.node.mediaDetails.height'
   | 'featuredImage.node.mediaDetails.sizes'
@@ -40291,6 +40804,7 @@ type tsTestimonialFieldsEnum =
   | 'featuredImage.node.remoteFile.size'
   | 'featuredImage.node.remoteFile.sourceInstanceName'
   | 'featuredImage.node.remoteFile.uid'
+  | 'featuredImage.node.remoteFile.url'
   | 'featuredImage.node.resize.height'
   | 'featuredImage.node.resize.src'
   | 'featuredImage.node.resize.width'
@@ -40538,6 +41052,7 @@ type tsTestimonialFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
+  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -40591,6 +41106,7 @@ type tsTestimonialFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
+  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -40714,6 +41230,7 @@ type tsTestimonialFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
+  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -40767,6 +41284,7 @@ type tsTestimonialFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
+  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
@@ -41710,6 +42228,7 @@ type tsUserFieldsEnum =
   | 'authorProfile.profile.localFile.size'
   | 'authorProfile.profile.localFile.sourceInstanceName'
   | 'authorProfile.profile.localFile.uid'
+  | 'authorProfile.profile.localFile.url'
   | 'authorProfile.profile.mediaDetails.file'
   | 'authorProfile.profile.mediaDetails.height'
   | 'authorProfile.profile.mediaDetails.sizes'
@@ -41763,6 +42282,7 @@ type tsUserFieldsEnum =
   | 'authorProfile.profile.remoteFile.size'
   | 'authorProfile.profile.remoteFile.sourceInstanceName'
   | 'authorProfile.profile.remoteFile.uid'
+  | 'authorProfile.profile.remoteFile.url'
   | 'authorProfile.profile.resize.height'
   | 'authorProfile.profile.resize.src'
   | 'authorProfile.profile.resize.width'
@@ -42272,6 +42792,7 @@ type tsUserFieldsEnum =
   | 'seo.opengraphImage.localFile.size'
   | 'seo.opengraphImage.localFile.sourceInstanceName'
   | 'seo.opengraphImage.localFile.uid'
+  | 'seo.opengraphImage.localFile.url'
   | 'seo.opengraphImage.mediaDetails.file'
   | 'seo.opengraphImage.mediaDetails.height'
   | 'seo.opengraphImage.mediaDetails.sizes'
@@ -42325,6 +42846,7 @@ type tsUserFieldsEnum =
   | 'seo.opengraphImage.remoteFile.size'
   | 'seo.opengraphImage.remoteFile.sourceInstanceName'
   | 'seo.opengraphImage.remoteFile.uid'
+  | 'seo.opengraphImage.remoteFile.url'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
   | 'seo.opengraphImage.resize.width'
@@ -42451,6 +42973,7 @@ type tsUserFieldsEnum =
   | 'seo.twitterImage.localFile.size'
   | 'seo.twitterImage.localFile.sourceInstanceName'
   | 'seo.twitterImage.localFile.uid'
+  | 'seo.twitterImage.localFile.url'
   | 'seo.twitterImage.mediaDetails.file'
   | 'seo.twitterImage.mediaDetails.height'
   | 'seo.twitterImage.mediaDetails.sizes'
@@ -42504,6 +43027,7 @@ type tsUserFieldsEnum =
   | 'seo.twitterImage.remoteFile.size'
   | 'seo.twitterImage.remoteFile.sourceInstanceName'
   | 'seo.twitterImage.remoteFile.uid'
+  | 'seo.twitterImage.remoteFile.url'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
   | 'seo.twitterImage.resize.width'
