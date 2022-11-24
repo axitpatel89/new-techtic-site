@@ -59,44 +59,44 @@ exports.createPages = async ({ graphql, actions }) => {
   const PhpDevelopmentCompany = path.resolve(
     `src/template/phpDevelopmentCompany.tsx`
   );
-  // const ReactNativeAppDevelopment = path.resolve(
-  //   `src/template/reactNativeAppDevelopment.tsx`
-  // );
-  // const XamarinAppDevelopment = path.resolve(
-  //   `src/template/xamarinAppDevelopment.tsx`
-  // );
-  // const FlutterAppDevelopment = path.resolve(
-  //   `src/template/flutterAppDevelopment.tsx`
-  // );
-  // const IonicAppDevelopment = path.resolve(
-  //   `src/template/ionicAppDevelopment.tsx`
-  // );
-  // const AndroidAppDevelopmentCompany = path.resolve(
-  //   `src/template/androidAppDevelopmentCompany.tsx`
-  // );
-  // const IosAppDevelopmentCompany = path.resolve(
-  //   `src/template/iosAppDevelopmentCompany.tsx`
-  // );
-  // const WordpressDevelopmentCompany = path.resolve(
-  //   `src/template/wordpressDevelopmentCompany.tsx`
-  // );
-  // const UiUxDevelopmentCompany = path.resolve(
-  //   `src/template/uiuxDevelopmentCompany.tsx`
-  // );
-  // const WebAppDevelopmentCompany = path.resolve(
-  //   `src/template/webAppDevelopmentCompany.tsx`
-  // );
-  // const OffshoreDevelopment = path.resolve(
-  //   `src/template/offshoreDevelopment.tsx`
-  // );
-  // const MvpDevelopment = path.resolve(`src/template/mvpDevelopment.tsx`);
-  // const MobileApplicationDevelopmentCompany = path.resolve(
-  //   `src/template/mobileApplicationDevelopmentCompany.tsx`
-  // );
-  // const CrossPlatformAppDevelopment = path.resolve(
-  //   `src/template/crossPlatformAppDevelopment.tsx`
-  // );
-  // const InternetOfThings = path.resolve(`src/template/internetOfThings.tsx`);
+  const ReactNativeAppDevelopment = path.resolve(
+    `src/template/reactNativeAppDevelopment.tsx`
+  );
+  const XamarinAppDevelopment = path.resolve(
+    `src/template/xamarinAppDevelopment.tsx`
+  );
+  const FlutterAppDevelopment = path.resolve(
+    `src/template/flutterAppDevelopment.tsx`
+  );
+  const IonicAppDevelopment = path.resolve(
+    `src/template/ionicAppDevelopment.tsx`
+  );
+  const AndroidAppDevelopmentCompany = path.resolve(
+    `src/template/androidAppDevelopmentCompany.tsx`
+  );
+  const IosAppDevelopmentCompany = path.resolve(
+    `src/template/iosAppDevelopmentCompany.tsx`
+  );
+  const WordpressDevelopmentCompany = path.resolve(
+    `src/template/wordpressDevelopmentCompany.tsx`
+  );
+  const UiUxDevelopmentCompany = path.resolve(
+    `src/template/uiuxDevelopmentCompany.tsx`
+  );
+  const WebAppDevelopmentCompany = path.resolve(
+    `src/template/webAppDevelopmentCompany.tsx`
+  );
+  const OffshoreDevelopment = path.resolve(
+    `src/template/offshoreDevelopment.tsx`
+  );
+  const MvpDevelopment = path.resolve(`src/template/mvpDevelopment.tsx`);
+  const MobileApplicationDevelopmentCompany = path.resolve(
+    `src/template/mobileApplicationDevelopmentCompany.tsx`
+  );
+  const CrossPlatformAppDevelopment = path.resolve(
+    `src/template/crossPlatformAppDevelopment.tsx`
+  );
+  const InternetOfThings = path.resolve(`src/template/internetOfThings.tsx`);
   // const FintechTemplate = path.resolve(`src/template/fintech.tsx`);
   // const TravelTemplate = path.resolve(`src/template/travel.tsx`);
   // const HealthcareTemplate = path.resolve(`src/template/healthcare.tsx`);
@@ -321,132 +321,132 @@ exports.createPages = async ({ graphql, actions }) => {
         },
       });
     }
-    // if (edge.node.slug === "react-native-app-development") {
-    //   createPage({
-    //     path: `${edge.node.slug}`,
-    //     component: ReactNativeAppDevelopment,
-    //     context: {
-    //       title: edge.node.id,
-    //     },
-    //   });
-    // }
-    // if (edge.node.slug === "xamarin-app-development") {
-    //   createPage({
-    //     path: `${edge.node.slug}`,
-    //     component: XamarinAppDevelopment,
-    //     context: {
-    //       title: edge.node.id,
-    //     },
-    //   });
-    // }
-    // if (edge.node.slug === "flutter-app-development") {
-    //   createPage({
-    //     path: `${edge.node.slug}`,
-    //     component: FlutterAppDevelopment,
-    //     context: {
-    //       title: edge.node.id,
-    //     },
-    //   });
-    // }
-    // if (edge.node.slug === "ionic-app-development") {
-    //   createPage({
-    //     path: `${edge.node.slug}`,
-    //     component: IonicAppDevelopment,
-    //     context: {
-    //       title: edge.node.id,
-    //     },
-    //   });
-    // }
-    // if (edge.node.slug === "android-app-development-company") {
-    //   createPage({
-    //     path: `${edge.node.slug}`,
-    //     component: AndroidAppDevelopmentCompany,
-    //     context: {
-    //       title: edge.node.id,
-    //     },
-    //   });
-    // }
-    // if (edge.node.slug === "ios-app-development-company") {
-    //   createPage({
-    //     path: `${edge.node.slug}`,
-    //     component: IosAppDevelopmentCompany,
-    //     context: {
-    //       title: edge.node.id,
-    //     },
-    //   });
-    // }
-    // if (edge.node.slug === "wordpress-development-company") {
-    //   createPage({
-    //     path: `${edge.node.slug}`,
-    //     component: WordpressDevelopmentCompany,
-    //     context: {
-    //       title: edge.node.id,
-    //     },
-    //   });
-    // }
-    // if (edge.node.slug === "ui-ux-development-company") {
-    //   createPage({
-    //     path: `${edge.node.slug}`,
-    //     component: UiUxDevelopmentCompany,
-    //     context: {
-    //       title: edge.node.id,
-    //     },
-    //   });
-    // }
-    // if (edge.node.slug === "web-app-development-company") {
-    //   createPage({
-    //     path: `${edge.node.slug}`,
-    //     component: WebAppDevelopmentCompany,
-    //     context: {
-    //       title: edge.node.id,
-    //     },
-    //   });
-    // }
-    // if (edge.node.slug === "offshore-development") {
-    //   createPage({
-    //     path: `${edge.node.slug}`,
-    //     component: OffshoreDevelopment,
-    //     context: {
-    //       title: edge.node.id,
-    //     },
-    //   });
-    // }
-    // if (edge.node.slug === "mvp-development") {
-    //   createPage({
-    //     path: `${edge.node.slug}`,
-    //     component: MvpDevelopment,
-    //     context: {
-    //       title: edge.node.id,
-    //     },
-    //   });
-    // }
-    // if (edge.node.slug === "mobile-application-development-company") {
-    //   createPage({
-    //     path: `${edge.node.slug}`,
-    //     component: MobileApplicationDevelopmentCompany,
-    //     context: {
-    //       title: edge.node.id,
-    //     },
-    //   });
-    // }
-    // if (edge.node.slug === "cross-platform-app-development") {
-    //   createPage({
-    //     path: `${edge.node.slug}`,
-    //     component: CrossPlatformAppDevelopment,
-    //     context: {
-    //       title: edge.node.id,
-    //     },
-    //   });
-    // }
-    // if (edge.node.slug === "internet-of-things") {
-    //   createPage({
-    //     path: `${edge.node.slug}`,
-    //     component: InternetOfThings,
-    //     context: {
-    //       title: edge.node.id,
-    //     },
-    //   });
-    // }
+    if (edge.node.slug === "react-native-app-development") {
+      createPage({
+        path: `${edge.node.slug}`,
+        component: ReactNativeAppDevelopment,
+        context: {
+          title: edge.node.id,
+        },
+      });
+    }
+    if (edge.node.slug === "xamarin-app-development") {
+      createPage({
+        path: `${edge.node.slug}`,
+        component: XamarinAppDevelopment,
+        context: {
+          title: edge.node.id,
+        },
+      });
+    }
+    if (edge.node.slug === "flutter-app-development") {
+      createPage({
+        path: `${edge.node.slug}`,
+        component: FlutterAppDevelopment,
+        context: {
+          title: edge.node.id,
+        },
+      });
+    }
+    if (edge.node.slug === "ionic-app-development") {
+      createPage({
+        path: `${edge.node.slug}`,
+        component: IonicAppDevelopment,
+        context: {
+          title: edge.node.id,
+        },
+      });
+    }
+    if (edge.node.slug === "android-app-development-company") {
+      createPage({
+        path: `${edge.node.slug}`,
+        component: AndroidAppDevelopmentCompany,
+        context: {
+          title: edge.node.id,
+        },
+      });
+    }
+    if (edge.node.slug === "ios-app-development-company") {
+      createPage({
+        path: `${edge.node.slug}`,
+        component: IosAppDevelopmentCompany,
+        context: {
+          title: edge.node.id,
+        },
+      });
+    }
+    if (edge.node.slug === "wordpress-development-company") {
+      createPage({
+        path: `${edge.node.slug}`,
+        component: WordpressDevelopmentCompany,
+        context: {
+          title: edge.node.id,
+        },
+      });
+    }
+    if (edge.node.slug === "ui-ux-development-company") {
+      createPage({
+        path: `${edge.node.slug}`,
+        component: UiUxDevelopmentCompany,
+        context: {
+          title: edge.node.id,
+        },
+      });
+    }
+    if (edge.node.slug === "web-app-development-company") {
+      createPage({
+        path: `${edge.node.slug}`,
+        component: WebAppDevelopmentCompany,
+        context: {
+          title: edge.node.id,
+        },
+      });
+    }
+    if (edge.node.slug === "offshore-development") {
+      createPage({
+        path: `${edge.node.slug}`,
+        component: OffshoreDevelopment,
+        context: {
+          title: edge.node.id,
+        },
+      });
+    }
+    if (edge.node.slug === "mvp-development") {
+      createPage({
+        path: `${edge.node.slug}`,
+        component: MvpDevelopment,
+        context: {
+          title: edge.node.id,
+        },
+      });
+    }
+    if (edge.node.slug === "mobile-application-development-company") {
+      createPage({
+        path: `${edge.node.slug}`,
+        component: MobileApplicationDevelopmentCompany,
+        context: {
+          title: edge.node.id,
+        },
+      });
+    }
+    if (edge.node.slug === "cross-platform-app-development") {
+      createPage({
+        path: `${edge.node.slug}`,
+        component: CrossPlatformAppDevelopment,
+        context: {
+          title: edge.node.id,
+        },
+      });
+    }
+    if (edge.node.slug === "internet-of-things") {
+      createPage({
+        path: `${edge.node.slug}`,
+        component: InternetOfThings,
+        context: {
+          title: edge.node.id,
+        },
+      });
+    }
 
     // if (edge.node.slug === "fintech") {
     //   createPage({
