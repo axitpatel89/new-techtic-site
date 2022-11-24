@@ -124,8 +124,8 @@ exports.createPages = async ({ graphql, actions }) => {
   //   `src/template/dosAndDontsOfExperienceDesign.tsx`
   // );
   // const ProcessPage = path.resolve(`src/template/process.tsx`);
-  // const Thoughtspace = path.resolve(`./src/template/thoughtspace.tsx`);
-  // const OurWorkListingPage = path.resolve(`./src/template/Work.tsx`);
+  const Thoughtspace = path.resolve(`./src/template/thoughtspace.tsx`);
+  const OurWorkListingPage = path.resolve(`./src/template/Work.tsx`);
 
 
   const result = await graphql(`
@@ -565,24 +565,24 @@ exports.createPages = async ({ graphql, actions }) => {
     //     },
     //   });
     // }
-    // if (edge.node.slug === "thoughtspace") {
-    //   createPage({
-    //     path: `${edge.node.slug}`,
-    //     component: Thoughtspace,
-    //     context: {
-    //       title: edge.node.id,
-    //     },
-    //   });
-    // }
-    // if (edge.node.slug === "our-work") {
-    //   createPage({
-    //     path: `${edge.node.slug}`,
-    //     component: OurWorkListingPage,
-    //     context: {
-    //       title: edge.node.id,
-    //     },
-    //   });
-    // }
+    if (edge.node.slug === "thoughtspace") {
+      createPage({
+        path: `${edge.node.slug}`,
+        component: Thoughtspace,
+        context: {
+          title: edge.node.id,
+        },
+      });
+    }
+    if (edge.node.slug === "our-work") {
+      createPage({
+        path: `${edge.node.slug}`,
+        component: OurWorkListingPage,
+        context: {
+          title: edge.node.id,
+        },
+      });
+    }
   });
 
   // create page for all post
