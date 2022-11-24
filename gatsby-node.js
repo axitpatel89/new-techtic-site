@@ -97,33 +97,33 @@ exports.createPages = async ({ graphql, actions }) => {
     `src/template/crossPlatformAppDevelopment.tsx`
   );
   const InternetOfThings = path.resolve(`src/template/internetOfThings.tsx`);
-  // const FintechTemplate = path.resolve(`src/template/fintech.tsx`);
-  // const TravelTemplate = path.resolve(`src/template/travel.tsx`);
-  // const HealthcareTemplate = path.resolve(`src/template/healthcare.tsx`);
-  // const OnDemandTemplate = path.resolve(`src/template/onDemand.tsx`);
-  // const WoocommerceDevelopment = path.resolve(
-  //   `src/template/woocommerceDevelopment.tsx`
-  // );
-  // const EcommerceDevelopment = path.resolve(
-  //   `src/template/ecommerceDevelopment.tsx`
-  // );
-  // const BigcommerceDevelopmentCompany = path.resolve(
-  //   `src/template/bigCommerceDevelopmentCompany.tsx`
-  // );
-  // const CommercetoolsDevelopment = path.resolve(
-  //   `src/template/commerceToolsDevelopment.tsx`
-  // );
+  const FintechTemplate = path.resolve(`src/template/fintech.tsx`);
+  const TravelTemplate = path.resolve(`src/template/travel.tsx`);
+  const HealthcareTemplate = path.resolve(`src/template/healthcare.tsx`);
+  const OnDemandTemplate = path.resolve(`src/template/onDemand.tsx`);
+  const WoocommerceDevelopment = path.resolve(
+    `src/template/woocommerceDevelopment.tsx`
+  );
+  const EcommerceDevelopment = path.resolve(
+    `src/template/ecommerceDevelopment.tsx`
+  );
+  const BigcommerceDevelopmentCompany = path.resolve(
+    `src/template/bigCommerceDevelopmentCompany.tsx`
+  );
+  const CommercetoolsDevelopment = path.resolve(
+    `src/template/commerceToolsDevelopment.tsx`
+  );
 
   const Careers = path.resolve(`src/template/Careers.tsx`);
-  // const MvpTemplate = path.resolve(`src/template/mvpTemplate.tsx`);
-  // const StaffAugmentation = path.resolve(`src/template/staffAugmentation.tsx`);
-  // const MoscowPrioritization = path.resolve(
-  //   `src/template/moscowPrioritization.tsx`
-  // );
-  // const DosAndDontsOfExperienceDesignPage = path.resolve(
-  //   `src/template/dosAndDontsOfExperienceDesign.tsx`
-  // );
-  // const ProcessPage = path.resolve(`src/template/process.tsx`);
+  const MvpTemplate = path.resolve(`src/template/mvpTemplate.tsx`);
+  const StaffAugmentation = path.resolve(`src/template/staffAugmentation.tsx`);
+  const MoscowPrioritization = path.resolve(
+    `src/template/moscowPrioritization.tsx`
+  );
+  const DosAndDontsOfExperienceDesignPage = path.resolve(
+    `src/template/dosAndDontsOfExperienceDesign.tsx`
+  );
+  const ProcessPage = path.resolve(`src/template/process.tsx`);
   const Thoughtspace = path.resolve(`./src/template/thoughtspace.tsx`);
   const OurWorkListingPage = path.resolve(`./src/template/Work.tsx`);
 
@@ -448,123 +448,123 @@ exports.createPages = async ({ graphql, actions }) => {
       });
     }
 
-    // if (edge.node.slug === "fintech") {
-    //   createPage({
-    //     path: `${edge.node.slug}`,
-    //     component: FintechTemplate,
-    //     context: {
-    //       title: edge.node.id,
-    //     },
-    //   });
-    // }
-    // if (edge.node.slug === "travel") {
-    //   createPage({
-    //     path: `${edge.node.slug}`,
-    //     component: TravelTemplate,
-    //     context: {
-    //       title: edge.node.id,
-    //     },
-    //   });
-    // }
-    // if (edge.node.slug === "healthcare") {
-    //   createPage({
-    //     path: `${edge.node.slug}`,
-    //     component: HealthcareTemplate,
-    //     context: {
-    //       title: edge.node.id,
-    //     },
-    //   });
-    // }
-    // if (edge.node.slug === "on-demand") {
-    //   createPage({
-    //     path: `${edge.node.slug}`,
-    //     component: OnDemandTemplate,
-    //     context: {
-    //       title: edge.node.id,
-    //     },
-    //   });
-    // }
-    // if (edge.node.slug === "woocommerce-development") {
-    //   createPage({
-    //     path: `${edge.node.slug}`,
-    //     component: WoocommerceDevelopment,
-    //     context: {
-    //       title: edge.node.id,
-    //     },
-    //   });
-    // }
-    // if (edge.node.slug === "ecommerce-development") {
-    //   createPage({
-    //     path: `${edge.node.slug}`,
-    //     component: EcommerceDevelopment,
-    //     context: {
-    //       title: edge.node.id,
-    //     },
-    //   });
-    // }
-    // if (edge.node.slug === "bigcommerce-development-company") {
-    //   createPage({
-    //     path: `${edge.node.slug}`,
-    //     component: BigcommerceDevelopmentCompany,
-    //     context: {
-    //       title: edge.node.id,
-    //     },
-    //   });
-    // }
-    // if (edge.node.slug === "commercetools-development") {
-    //   createPage({
-    //     path: `${edge.node.slug}`,
-    //     component: CommercetoolsDevelopment,
-    //     context: {
-    //       title: edge.node.id,
-    //     },
-    //   });
-    // }
-    // if (edge.node.slug === "mvp-template") {
-    //   createPage({
-    //     path: `${edge.node.slug}`,
-    //     component: MvpTemplate,
-    //     context: {
-    //       title: edge.node.id,
-    //     },
-    //   });
-    // }
-    // if (edge.node.slug === "staff-augmentation-guide-2021") {
-    //   createPage({
-    //     path: `${edge.node.slug}`,
-    //     component: StaffAugmentation,
-    //     context: {
-    //       title: edge.node.id,
-    //     },
-    //   });
-    // }
-    // if (edge.node.slug === "moscow-prioritization") {
-    //   createPage({
-    //     path: `${edge.node.slug}`,
-    //     component: MoscowPrioritization,
-    //     context: {
-    //       title: edge.node.id,
-    //     },
-    //   });
-    // }
-    // if (edge.node.slug === "dos-and-donts-of-experience-design") {
-    //   createPage({
-    //     path: `${edge.node.slug}`,
-    //     component: DosAndDontsOfExperienceDesignPage,
-    //     context: {
-    //       title: edge.node.id,
-    //     },
-    //   });
-    // }
-    // if (edge.node.slug === "process") {
-    //   createPage({
-    //     path: `${edge.node.slug}`,
-    //     component: ProcessPage,
-    //     context: {
-    //       title: edge.node.id,
-    //     },
-    //   });
-    // }
+    if (edge.node.slug === "fintech") {
+      createPage({
+        path: `${edge.node.slug}`,
+        component: FintechTemplate,
+        context: {
+          title: edge.node.id,
+        },
+      });
+    }
+    if (edge.node.slug === "travel") {
+      createPage({
+        path: `${edge.node.slug}`,
+        component: TravelTemplate,
+        context: {
+          title: edge.node.id,
+        },
+      });
+    }
+    if (edge.node.slug === "healthcare") {
+      createPage({
+        path: `${edge.node.slug}`,
+        component: HealthcareTemplate,
+        context: {
+          title: edge.node.id,
+        },
+      });
+    }
+    if (edge.node.slug === "on-demand") {
+      createPage({
+        path: `${edge.node.slug}`,
+        component: OnDemandTemplate,
+        context: {
+          title: edge.node.id,
+        },
+      });
+    }
+    if (edge.node.slug === "woocommerce-development") {
+      createPage({
+        path: `${edge.node.slug}`,
+        component: WoocommerceDevelopment,
+        context: {
+          title: edge.node.id,
+        },
+      });
+    }
+    if (edge.node.slug === "ecommerce-development") {
+      createPage({
+        path: `${edge.node.slug}`,
+        component: EcommerceDevelopment,
+        context: {
+          title: edge.node.id,
+        },
+      });
+    }
+    if (edge.node.slug === "bigcommerce-development-company") {
+      createPage({
+        path: `${edge.node.slug}`,
+        component: BigcommerceDevelopmentCompany,
+        context: {
+          title: edge.node.id,
+        },
+      });
+    }
+    if (edge.node.slug === "commercetools-development") {
+      createPage({
+        path: `${edge.node.slug}`,
+        component: CommercetoolsDevelopment,
+        context: {
+          title: edge.node.id,
+        },
+      });
+    }
+    if (edge.node.slug === "mvp-template") {
+      createPage({
+        path: `${edge.node.slug}`,
+        component: MvpTemplate,
+        context: {
+          title: edge.node.id,
+        },
+      });
+    }
+    if (edge.node.slug === "staff-augmentation-guide-2021") {
+      createPage({
+        path: `${edge.node.slug}`,
+        component: StaffAugmentation,
+        context: {
+          title: edge.node.id,
+        },
+      });
+    }
+    if (edge.node.slug === "moscow-prioritization") {
+      createPage({
+        path: `${edge.node.slug}`,
+        component: MoscowPrioritization,
+        context: {
+          title: edge.node.id,
+        },
+      });
+    }
+    if (edge.node.slug === "dos-and-donts-of-experience-design") {
+      createPage({
+        path: `${edge.node.slug}`,
+        component: DosAndDontsOfExperienceDesignPage,
+        context: {
+          title: edge.node.id,
+        },
+      });
+    }
+    if (edge.node.slug === "process") {
+      createPage({
+        path: `${edge.node.slug}`,
+        component: ProcessPage,
+        context: {
+          title: edge.node.id,
+        },
+      });
+    }
     if (edge.node.slug === "thoughtspace") {
       createPage({
         path: `${edge.node.slug}`,
