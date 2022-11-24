@@ -29,9 +29,9 @@ module.exports = {
         schema: {
           typePrefix: `ts`,
           timeout: 12000000,
-          perPage: 50,
-          requestConcurrency: 15,
-          previewRequestConcurrency: 5,
+          perPage: 5,
+          requestConcurrency: 2,
+          previewRequestConcurrency: 2,
         },
         production: {
           allow404Images: true,
@@ -47,7 +47,7 @@ module.exports = {
         type: {
           MediaItem: {
             localFile: {
-              requestConcurrency: 50,
+              requestConcurrency: 5,
             },
           },
           Post: {
